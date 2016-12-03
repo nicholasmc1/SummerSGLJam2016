@@ -22,10 +22,7 @@ public class PlayerBindings : PlayerActionSet
 	public PlayerAction blink;
 	public PlayerAction cancel;
 
-	public PlayerAction sprint;
-	public PlayerAction jump;
-	public PlayerAction inventory;
-	public PlayerAction crouch;
+	public PlayerAction ragdoll;
 	public PlayerAction pauseGame;
 
 	public PlayerAction hotbar1;
@@ -53,10 +50,7 @@ public class PlayerBindings : PlayerActionSet
 		cancel = CreatePlayerAction("Cancel");
 		reload = CreatePlayerAction("Reload");
 
-		sprint = CreatePlayerAction("Sprint");
-		jump = CreatePlayerAction("Jump");
-		inventory = CreatePlayerAction("Inventory");
-		crouch = CreatePlayerAction("Crouch");
+		ragdoll = CreatePlayerAction("Ragdoll");
 		pauseGame = CreatePlayerAction("Pause Game");
 
 		hotbar1 = CreatePlayerAction("Hotbar One");

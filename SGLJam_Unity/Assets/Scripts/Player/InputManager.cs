@@ -42,10 +42,7 @@ public class InputManager : MonoBehaviour
 		bindings.reload.AddDefaultBinding(Key.R);
 		bindings.cancel.AddDefaultBinding(Key.Q);
 
-		bindings.inventory.AddDefaultBinding(Key.Tab);
-		bindings.jump.AddDefaultBinding(Key.Space);
-		bindings.crouch.AddDefaultBinding(Key.C);
-		bindings.sprint.AddDefaultBinding(Key.Shift);
+		bindings.ragdoll.AddDefaultBinding(Key.Space);
 		bindings.pauseGame.AddDefaultBinding(Key.Escape);
 
 		bindings.hotbar1.AddDefaultBinding(Key.Key1);
