@@ -4,9 +4,7 @@ using InControl;
 
 public class PlayerCore : StateBehaviour {
 	private PlayerMovement move;
-	//private PlayerInteraction actions;
-	//[HideInInspector]
-	//public EntityStats stats;
+	private WeaponManagement weapon;
 
 	public Transform headDirection;
 	public enum inputState{free, inventory};
@@ -18,6 +16,7 @@ public class PlayerCore : StateBehaviour {
 
 	void Awake() {
 		move = GetComponent<PlayerMovement>();
+		weapon = GetComponentInChildren<WeaponManagement> ();
 		//actions = GetComponent<PlayerInteraction>();
 		//stats = GetComponent<EntityStats>();
 		//stats.UpdateHealth(0,0,0);
@@ -37,8 +36,8 @@ public class PlayerCore : StateBehaviour {
 			move.MovePlayer(new Vector3(bindings.move.X, 0, bindings.move.Y));
 			move.CameraMove(new Vector3(-bindings.look.Y, bindings.look.X, 0));
 
-//			if (bindings.attack.WasPressed)
-//				actions.PrimaryAction();
+			if (bindings.attack.WasPressed)
+				weapon.Fire ();
 //
 //			if (bindings.attackUtility.WasPressed)
 //				actions.SecondaryAction();
