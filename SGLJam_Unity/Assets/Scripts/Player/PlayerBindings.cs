@@ -17,9 +17,9 @@ public class PlayerBindings : PlayerActionSet
 	public PlayerTwoAxisAction look;
 
 	public PlayerAction interact;
-	public PlayerAction attack;
+	public PlayerAction fire;
 	public PlayerAction reload;
-	public PlayerAction attackUtility;
+	public PlayerAction blink;
 	public PlayerAction cancel;
 
 	public PlayerAction sprint;
@@ -48,8 +48,8 @@ public class PlayerBindings : PlayerActionSet
 		look = CreateTwoAxisPlayerAction(lookLeft, lookRight, lookDown, lookUp);
 
 		interact = CreatePlayerAction("Interact");
-		attack = CreatePlayerAction("Attack");
-		attackUtility = CreatePlayerAction("Attack Utility");
+		fire = CreatePlayerAction("Fire");
+		blink = CreatePlayerAction("Blink");
 		cancel = CreatePlayerAction("Cancel");
 		reload = CreatePlayerAction("Reload");
 
