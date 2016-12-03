@@ -17,8 +17,13 @@ public class PlayerCore : StateBehaviour {
 	public PlayerBindings bindings;
 	public static PlayerCore _instance;
 
-	void Awake() {
-		_instance = this;
+	void Awake() 
+	{
+		if (PlayerCore._instance == null)
+			_instance = this;
+		else
+			Destroy (this.gameObject);
+		
 		Cursor.lockState = CursorLockMode.Locked;
 		move = GetComponent<PlayerMovement>();
 		weapon = GetComponentInChildren<WeaponManagement> ();

@@ -2,17 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level : MonoBehaviour {
+public class Level : StateBehaviour {
 	public GameObject previousDoor;
 	public GameObject nextDoor;
 	public bool transition;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () 
+	{
+		DelayAwake ();
+	}
+
+	public void SetTransform(Level transitionRoom) {
+		transform.position = transitionRoom.nextDoor.transform.position;
+		transform.rotation = transitionRoom.nextDoor.transform.rotation * Quaternion.Inverse(previousDoor.transform.rotation);
+	}
+
+	void DelayAwake()
+	{
+		//yield return new WaitForEndOfFrame ();
 		if (transition) {
-			RootSceneManager.GetInstance ().SetTransitionRoom (this);
+			Debug.Log ("Transition Level");
+			RootSceneManager.Instance.SetTransitionRoom (this);
+			nextDoor.SetActive(true);
 		} else {
-			RootSceneManager.GetInstance ().SetCurrentLevel (this);
+			Debug.Log ("Current Level");
+			RootSceneManager.Instance.SetCurrentLevel (this);
+			previousDoor.SetActive(false);
+
 		}
 	}
 }

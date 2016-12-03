@@ -3,79 +3,93 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RootSceneManager : StateBehaviour {
+public class RootSceneManager : MonoBehaviour {
 	// Singleton Crap
-	private static RootSceneManager _instance;
+	public static RootSceneManager Instance;
 
 	private RootSceneManager() {}
 
-	public static RootSceneManager GetInstance() {
+	void Awake()
+	{
+		Instance = this;
+		LoadLevel ("TransitionTunnel");
+		Instantiate (playerPrefab, new Vector3(0f, 0f, -2f), Quaternion.identity);
+		_levels = new string[]{"Level1", "Level2"};
+		//init transition room
+	}
+	/*public static RootSceneManager GetInstance() {
 		if (_instance != null) {
 			return _instance;
 		} else {
 			_instance = new RootSceneManager ();
+			Debug.Log ("Singleton Called!");
 			return _instance;
 		}
-	}
+	}*/
 
 	// Actual Class
+	public GameObject playerPrefab;
+
 	private string[] _levels;
-	private string _currentLevelScene;
-	private const string _transitionRoomScene = "Scenes/TransitionRoom";
+	private int _currentLevelScene;
+	private const string _transitionRoomScene = "TransitionTunnel";
 
 	private string _nextLevel;
 	private Level _transitionRoom;
 	private Level _currentLevel;
 
-	public void SetCurrentLevel(Level level) {
+	public void SetCurrentLevel(Level level) 
+	{
 		_currentLevel = level;
+		Debug.Log (_currentLevel);
 	}
 
 	public void SetTransitionRoom(Level level) {
 		_transitionRoom = level;
 	}
 
-	private IEnumerator RemoveLevel(string level, System.Action<int> levelRemoved) {
-		yield return SceneManager.UnloadSceneAsync (level);
-		levelRemoved (0);
+	private void RemoveLevel(string level) {
+		SceneManager.UnloadScene (level);
 	}
 
-	private IEnumerator LoadLevel(string level, System.Action<int> levelLoaded) {
-		yield return SceneManager.LoadSceneAsync (level, LoadSceneMode.Additive);
-		levelLoaded (0);
+	private void LoadLevel(string level) {
+		SceneManager.LoadScene (level, LoadSceneMode.Additive);
 	}
 
 	// Call this once you are at the end of a level
-	public void SetupTransitionRoom(System.Action<int> callback) {
-		StartCoroutine (LoadLevel(_transitionRoomScene, levelLoaded => {
-			// Once transition room is created, open the doors
-			_currentLevel.nextDoor.SetActive(false);
-			_transitionRoom.previousDoor.SetActive(false);
-		}));
+	public void SetupTransitionRoom() {
+		_transitionRoom.gameObject.SetActive(true);
+		// Once transition room is active, open the doors
+		_currentLevel.nextDoor.SetActive(false);
+		_transitionRoom.previousDoor.SetActive(false);
 	}
 
 	// Call this once inside the beginning of a level
 	public void CloseTransitionRoom() {
 		// Close door to previous level
 		_currentLevel.previousDoor.SetActive (true);
-
-		//Unload transition room
-		StartCoroutine(RemoveLevel(_transitionRoomScene, levelRemoved => {}));
+		_transitionRoom.gameObject.SetActive (false);
 	}
 
 	// Call this once from inside the transition level
-	public void SetupNextLevel(string nextLevel, string previousLevel) {
+	public void SetupNextLevel() {
 		// Close door to previous level;
 		_transitionRoom.previousDoor.SetActive(true);
+		// Open door to next
+		_transitionRoom.nextDoor.SetActive(false);
 
-		// Remove previous level
-		StartCoroutine(RemoveLevel(previousLevel, levelRemoved => {
-			// Begin loading the next level once previous room is destroyed
-			StartCoroutine(LoadLevel(nextLevel, levelLoaded => {
-				// Once next level is loaded, open the door to the next level
-				_transitionRoom.nextDoor.SetActive(true);
-				_currentLevel.previousDoor.SetActive(false);
-			}));
-		}));
+		// Begin loading the next level once previous room is destroyed
+		LoadLevel(_levels[_currentLevelScene]);
+		_currentLevelScene++;
+		// Once next level is loaded, open the door to the next level
+		StartCoroutine(MovingNewLevel());
+	}
+	IEnumerator MovingNewLevel()
+	{
+		yield return new WaitForEndOfFrame ();
+		yield return new WaitForEndOfFrame ();
+		_currentLevel.SetTransform (_transitionRoom);
+		Debug.Log (_currentLevel);
+
 	}
 }

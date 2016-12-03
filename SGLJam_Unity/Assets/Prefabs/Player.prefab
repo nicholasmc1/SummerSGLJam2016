@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 124553124861839608}
   - component: {fileID: 81520862083511916}
   - component: {fileID: 114904372892810400}
+  - component: {fileID: 114852543086966852}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -320,7 +321,7 @@ MonoBehaviour:
   timeSinceGrounded: 0
 --- !u!114 &114852543086966852
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1760192089657256}

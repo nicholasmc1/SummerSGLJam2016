@@ -19,7 +19,7 @@ public class Goal : StateBehaviour {
 	{
 		if(collision.gameObject.name == "Player")
 		{
-			Destroy(collision.gameObject);
+			RootSceneManager.Instance.SetupTransitionRoom();
 		}
 	}
 }
