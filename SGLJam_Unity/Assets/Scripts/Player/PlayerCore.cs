@@ -43,8 +43,7 @@ public class PlayerCore : StateBehaviour {
 			move.CameraMove(new Vector3(-bindings.look.Y, bindings.look.X, 0));
 
 			if (bindings.fire.WasPressed) {
-				weapon.Fire ();
-				blinkBall = weapon.blinkBall;
+				blinkBall = weapon.Fire ();
 			}
 //
 			if (bindings.blink.WasPressed && blinkBall != null) {

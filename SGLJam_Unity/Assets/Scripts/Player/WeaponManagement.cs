@@ -8,25 +8,15 @@ public class WeaponManagement : StateBehaviour {
 	public Transform shootOrigin;
 	public float speed;
 
-	public BlinkBall blinkBall = null;
+    private GameObject _blinkBall;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-	public void Fire() {
-		if (blinkBall != null) {
-			Destroy (blinkBall.gameObject);
+	public BlinkBall Fire() {
+		if (_blinkBall != null) {
+            Destroy(_blinkBall);
 		}
 		Debug.Log ("Pew!");
-		GameObject projectile = Instantiate (projectilePrefab, shootOrigin.position, shootOrigin.rotation) as GameObject;
-		projectile.GetComponent<Rigidbody> ().velocity = transform.TransformDirection (new Vector3 (0, speed, 0));
-		blinkBall = projectile.GetComponent<BlinkBall> ();
+		_blinkBall = Instantiate (projectilePrefab, shootOrigin.position, shootOrigin.rotation) as GameObject;
+        _blinkBall.GetComponent<Rigidbody>().velocity = transform.TransformDirection(new Vector3(0, speed, 0));
+        return _blinkBall.GetComponent<BlinkBall>();
 	}
 }
