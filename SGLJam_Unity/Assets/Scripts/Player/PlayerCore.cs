@@ -16,8 +16,8 @@ public class PlayerCore : StateBehaviour {
 	public static PlayerCore _instance;
 
 	void Awake() {
+		_instance = this;
 		Cursor.lockState = CursorLockMode.Locked;
-		Cursor.visible = false;
 		move = GetComponent<PlayerMovement>();
 		weapon = GetComponentInChildren<WeaponManagement> ();
 		//actions = GetComponent<PlayerInteraction>();
@@ -46,8 +46,12 @@ public class PlayerCore : StateBehaviour {
 				blinkBall = weapon.Fire ();
 			}
 //
-			if (bindings.blink.WasPressed && blinkBall != null) {
-				blinkBall.Teleport (gameObject);
+			if (bindings.blink.WasPressed) {
+				if (blinkBall != null) {
+					blinkBall.Teleport (gameObject);
+				} else {
+					// Play an error sound or something;
+				}
 			}
 
 			if (Input.GetKeyDown(KeyCode.V)) {
@@ -62,7 +66,6 @@ public class PlayerCore : StateBehaviour {
 	public override void UpdatePaused() {
 		if (bindings.pauseGame.WasPressed) {
 			Cursor.lockState = CursorLockMode.Locked;
-			Cursor.visible = false;
 			Globals.gameState = GameState.Playing;
 		}
 	}
