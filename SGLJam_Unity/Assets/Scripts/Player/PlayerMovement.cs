@@ -10,7 +10,7 @@ public class PlayerMovement: StateBehaviour
 //	public PlayerInteraction actions;
 
 	//states
-	public enum movementState { standing, switching, jump };
+	public enum movementState { standing, switching, blink };
 	public movementState _movState;
 	public bool grounded = true;
 
@@ -19,7 +19,8 @@ public class PlayerMovement: StateBehaviour
 	private float sprintSpeed = 9.5f;
 	public float gravity = 100f;
 
-	private Vector3 newMove;
+	[HideInInspector]
+	public Vector3 newMove;
 
 	//camera
 	private Vector3 newLook;
@@ -29,13 +30,12 @@ public class PlayerMovement: StateBehaviour
 
 	//crouching info
 	private float heightTarget = 2f;
-	private float eyeHeight = 1.7f;
-
-	public AnimationCurve jumpCurve;
+	public float eyeHeight = 1.2f;
 
 	//grounding
 	private Vector3 surfaceNormal = new Vector3(0, 1, 0);
-	private float timeSinceGrounded;
+	[HideInInspector]
+	public float timeSinceGrounded;
 
 	public void Awake()
 	{
@@ -54,7 +54,7 @@ public class PlayerMovement: StateBehaviour
 			grounded = false;
 			surfaceNormal = Vector3.up;
 		}
-		else if(_movState != movementState.jump)
+		else if(_movState != movementState.blink)
 			grounded = true;
 
 		transform.rotation = Quaternion.Euler(0, newLook.y, 0);
@@ -76,22 +76,17 @@ public class PlayerMovement: StateBehaviour
 			newMove.z = Mathf.Clamp(newMove.z, -0.8f, 1);
 
 			newMove = new Vector3(transform.TransformDirection(newMove).x * moveSpeed, newMove.y, transform.TransformDirection(newMove).z * moveSpeed);
-			if(_movState != movementState.jump)
+			if(_movState != movementState.blink)
 				newMove = Vector3.ProjectOnPlane(newMove, surfaceNormal);
 
 		}
-		if (_movState != movementState.switching)
-		{
+		if (!grounded)
+			newMove = newMove + (-surfaceNormal / 2 * gravity * Time.deltaTime);
 
-			if (!grounded)
-				newMove = newMove + (-surfaceNormal / 2 * gravity * Time.deltaTime);
+		else if (_movState == movementState.standing)
+			newMove = newMove + Vector3.ProjectOnPlane(new Vector3(0, -0.01f, 0), surfaceNormal);
 
-			else if (_movState == movementState.standing)
-				newMove = newMove + Vector3.ProjectOnPlane(new Vector3(0, -0.01f, 0), surfaceNormal);
-
-			newMove = Vector3.ClampMagnitude(newMove, 30);
-		}
-
+		//newMove = Vector3.ClampMagnitude(newMove, 30);
 	}
 
 	public void CameraMove(Vector3 dir)
@@ -107,7 +102,9 @@ public class PlayerMovement: StateBehaviour
 	{
 //		if (hasInit && !GameController.instance.paused)
 //		if (PlayerCore._instance.playerState == PlayerCore.inputState.free && actions._state == PlayerInteraction.grabState.empty)
-		move.velocity = newMove;
+		if (grounded) {
+			move.velocity = newMove;
+		}
 //		else
 //			move.velocity = new Vector3(0, 0, 0);
 
@@ -117,7 +114,7 @@ public class PlayerMovement: StateBehaviour
 	{
 		//to improve cresting movement raycast ahead of the player and detect surface normal where they are going not where they are. 
 
-		if (hasInit && _movState != movementState.jump)
+		if (_movState != movementState.blink)
 		{
 			int counter = 0;
 			Vector3 avgNormal = new Vector3(0, 0, 0);
