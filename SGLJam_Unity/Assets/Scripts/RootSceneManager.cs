@@ -13,7 +13,7 @@ public class RootSceneManager : StateBehaviour {
 		if (_instance != null) {
 			return _instance;
 		} else {
-			_instance = RootSceneManager ();
+			_instance = new RootSceneManager ();
 			return _instance;
 		}
 	}
@@ -35,19 +35,19 @@ public class RootSceneManager : StateBehaviour {
 		_transitionRoom = level;
 	}
 
-	private IEnumerator RemoveLevel(string level, System.Action<int> callback) {
+	private IEnumerator RemoveLevel(string level, System.Action<int> levelRemoved) {
 		yield return SceneManager.UnloadSceneAsync (level);
-		callback (0);
+		levelRemoved (0);
 	}
 
-	private IEnumerator LoadLevel(string level, System.Action<int> callback) {
+	private IEnumerator LoadLevel(string level, System.Action<int> levelLoaded) {
 		yield return SceneManager.LoadSceneAsync (level, LoadSceneMode.Additive);
-		callback (0);
+		levelLoaded (0);
 	}
 
 	// Call this once you are at the end of a level
 	public void SetupTransitionRoom(System.Action<int> callback) {
-		StartCoroutine (LoadLevel(_transitionRoom, () => {
+		StartCoroutine (LoadLevel(_transitionRoomScene, levelLoaded => {
 			// Once transition room is created, open the doors
 			_currentLevel.nextDoor.SetActive(false);
 			_transitionRoom.previousDoor.SetActive(false);
@@ -60,7 +60,7 @@ public class RootSceneManager : StateBehaviour {
 		_currentLevel.previousDoor.SetActive (true);
 
 		//Unload transition room
-		StartCoroutine(RemoveLevel(_transitionRoomScene, () => {}));
+		StartCoroutine(RemoveLevel(_transitionRoomScene, levelRemoved => {}));
 	}
 
 	// Call this once from inside the transition level
@@ -69,13 +69,12 @@ public class RootSceneManager : StateBehaviour {
 		_transitionRoom.previousDoor.SetActive(true);
 
 		// Remove previous level
-		StartCoroutine(RemoveLevel(previousLevel, () => {
+		StartCoroutine(RemoveLevel(previousLevel, levelRemoved => {
 			// Begin loading the next level once previous room is destroyed
-			StartCoroutine(LoadLevel(nextLevel, () => {
+			StartCoroutine(LoadLevel(nextLevel, levelLoaded => {
 				// Once next level is loaded, open the door to the next level
 				_transitionRoom.nextDoor.SetActive(true);
 				_currentLevel.previousDoor.SetActive(false);
-				// TODO: Open doors
 			}));
 		}));
 	}
