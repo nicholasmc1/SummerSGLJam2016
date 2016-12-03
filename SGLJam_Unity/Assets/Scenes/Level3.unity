@@ -192,45 +192,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 4.0365047
-      objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_Center.x
-      value: 0.8752241
-      objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_Center.y
-      value: -0.5642053
-      objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_Size.z
-      value: -7.0703506
-      objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_Center.z
-      value: -1.3608027
-      objectReference: {fileID: 0}
     - target: {fileID: 1511524195504250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe, type: 2}
       propertyPath: m_Name
       value: DeathWater (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
+    - target: {fileID: 114656611589638678, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
         type: 2}
-      propertyPath: m_Size.y
-      value: 1.0153561
-      objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: respawn
+      value: 
+      objectReference: {fileID: 1985304255}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe, type: 2}
   m_IsPrefabParent: 0
@@ -6128,28 +6098,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1321979988 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1511524195504250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-    type: 2}
-  m_PrefabInternal: {fileID: 1898557487}
 --- !u!4 &1321979989 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4435427031992608, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
     type: 2}
   m_PrefabInternal: {fileID: 1898557487}
---- !u!114 &1321979990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1321979988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb285263dfd1d104dbc5f7d5c2f348cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawn: {fileID: 1985304255}
 --- !u!43 &1355545408
 Mesh:
   m_ObjectHideFlags: 0
@@ -6278,28 +6231,11 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
---- !u!1 &1426780143 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1511524195504250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-    type: 2}
-  m_PrefabInternal: {fileID: 165728864}
 --- !u!4 &1426780144 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4435427031992608, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
     type: 2}
   m_PrefabInternal: {fileID: 165728864}
---- !u!114 &1426780145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1426780143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb285263dfd1d104dbc5f7d5c2f348cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawn: {fileID: 1985304255}
 --- !u!1001 &1452430358
 Prefab:
   m_ObjectHideFlags: 0
@@ -6607,44 +6543,29 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 6.818941
-      objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_Center.x
-      value: -2.5946531
-      objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_Center.y
-      value: -0.54150975
-      objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_Size.z
-      value: -12.01808
-      objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_Center.z
-      value: 1.1130619
-      objectReference: {fileID: 0}
-    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.969965
-      objectReference: {fileID: 0}
     - target: {fileID: 1511524195504250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe, type: 2}
       propertyPath: m_Name
       value: DeathWater (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114656611589638678, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
+        type: 2}
+      propertyPath: respawn
+      value: 
+      objectReference: {fileID: 1985304255}
     - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
         type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: m_Size.x
+      value: 6.644642
+      objectReference: {fileID: 0}
+    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
+        type: 2}
+      propertyPath: m_Center.x
+      value: -2.6381273
+      objectReference: {fileID: 0}
+    - target: {fileID: 65038777867496250, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe,
+        type: 2}
+      propertyPath: m_Center.y
+      value: -0.5415096
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bcf6d7cc5489aa74e9eb3852b1fd19fe, type: 2}
