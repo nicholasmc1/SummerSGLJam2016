@@ -23,7 +23,7 @@ public class PlayerMovement: StateBehaviour
 
 	//camera
 	private Vector3 newLook;
-	//[HideInInspector]
+	[HideInInspector]
 	public Transform head;
 	private float sens = 5f;
 
