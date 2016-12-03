@@ -19,7 +19,8 @@ public class BlinkBall : StateBehaviour {
 		player.grounded = false;
 		obj.transform.position = transform.position;
 		StartCoroutine (SetVelocity (obj));
-		GetComponent<MeshRenderer> ().enabled = false;
+        foreach(MeshRenderer rend in GetComponentsInChildren<MeshRenderer>())
+		    rend.enabled = false;
 		GetComponent<Collider> ().enabled = false;
 		player.timeSinceGrounded = 0;
 	}

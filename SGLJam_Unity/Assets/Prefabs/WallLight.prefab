@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 4460356007481352}
   - component: {fileID: 33739602691332990}
   - component: {fileID: 23257221824286054}
+  - component: {fileID: 64041677515521716}
   m_Layer: 0
   m_Name: pr_WallLight (1)
   m_TagString: Untagged
@@ -92,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1156074937509964}
   m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2, z: -6.949}
+  m_LocalPosition: {x: 7, y: 3, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4460356007481352}
@@ -137,6 +138,20 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354972786482828}
+  m_Mesh: {fileID: 4300000, guid: 45fce66df8bce814cb50974a7f8760c8, type: 3}
+--- !u!64 &64041677515521716
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354972786482828}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 45fce66df8bce814cb50974a7f8760c8, type: 3}
 --- !u!108 &108581941727499320
 Light:
