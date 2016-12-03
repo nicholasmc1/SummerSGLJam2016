@@ -58,8 +58,11 @@ public class PlayerMovement: StateBehaviour
 			grounded = true;
 
 		transform.rotation = Quaternion.Euler(0, newLook.y, 0);
-		head.rotation = Quaternion.Euler(newLook);
-		head.position = new Vector3(transform.position.x, transform.position.y + eyeHeight , transform.position.z);
+
+		if (PlayerCore._instance.playerState != PlayerCore.inputState.ragdoll) {
+			head.position = new Vector3 (transform.position.x, transform.position.y + eyeHeight, transform.position.z);
+			head.rotation = Quaternion.Euler(newLook);
+		}
 
 		Vector3 flatMag = move.velocity;
 		flatMag.y = 0;

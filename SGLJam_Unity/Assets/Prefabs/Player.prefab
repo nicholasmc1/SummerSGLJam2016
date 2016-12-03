@@ -280,6 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e5765d683a86442ac2a1c360317c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragdollPrefab: {fileID: 1092881870398894, guid: db342097cb5c0dd46b337ac4452eb2eb,
+    type: 2}
   headDirection: {fileID: 4272354098934204}
   paused: 0
   playerState: 0
@@ -316,6 +318,20 @@ MonoBehaviour:
   head: {fileID: 4272354098934204}
   eyeHeight: 1.2
   timeSinceGrounded: 0
+--- !u!114 &114852543086966852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760192089657256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c6309898730d1498fd47d16f9fe3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAtTarget: {fileID: 0}
+  positionOffset: {x: 1.5, y: 1.5, z: 1.5}
+  speed: 4
 --- !u!114 &114868695736122878
 MonoBehaviour:
   m_ObjectHideFlags: 1
