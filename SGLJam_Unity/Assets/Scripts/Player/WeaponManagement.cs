@@ -8,6 +8,8 @@ public class WeaponManagement : StateBehaviour {
 	public Transform shootOrigin;
 	public float speed;
 
+	public BlinkBall blinkBall = null;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,8 +21,12 @@ public class WeaponManagement : StateBehaviour {
 	}
 
 	public void Fire() {
+		if (blinkBall != null) {
+			Destroy (blinkBall.gameObject);
+		}
 		Debug.Log ("Pew!");
 		GameObject projectile = Instantiate (projectilePrefab, shootOrigin.position, shootOrigin.rotation) as GameObject;
 		projectile.GetComponent<Rigidbody> ().velocity = transform.TransformDirection (new Vector3 (0, speed, 0));
+		blinkBall = projectile.GetComponent<BlinkBall> ();
 	}
 }

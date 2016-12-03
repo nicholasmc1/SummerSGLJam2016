@@ -108,7 +108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1561291261300190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4272354098934204}
@@ -122,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1337463579787504}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.25, y: -1, z: 10.5}
+  m_LocalPosition: {x: 0.25, y: -1, z: 2}
   m_LocalScale: {x: 0.5, y: 0.50000024, z: 0.50000024}
   m_Children:
   - {fileID: 4693758674062220}
@@ -266,7 +266,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!81 &81520862083511916
 AudioListener:
   m_ObjectHideFlags: 1
@@ -324,6 +324,8 @@ MonoBehaviour:
     type: 2}
   shootOrigin: {fileID: 4693758674062220}
   speed: 20
+  blinkBall: {fileID: 114338985836335982, guid: 95d0cbd972162b94a8407d896d37c102,
+    type: 2}
 --- !u!114 &114817834574250410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,13 +340,10 @@ MonoBehaviour:
   _movState: 0
   grounded: 1
   gravity: 100
+  newMove: {x: 0, y: 0, z: 0}
   head: {fileID: 4272354098934204}
-  jumpCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  eyeHeight: 1.2
+  timeSinceGrounded: 0
 --- !u!114 &114868695736122878
 MonoBehaviour:
   m_ObjectHideFlags: 1

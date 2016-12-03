@@ -5,6 +5,7 @@ using InControl;
 public class PlayerCore : StateBehaviour {
 	private PlayerMovement move;
 	private WeaponManagement weapon;
+	private BlinkBall blinkBall;
 
 	public Transform headDirection;
 	public enum inputState{free, inventory};
@@ -15,6 +16,8 @@ public class PlayerCore : StateBehaviour {
 	public static PlayerCore _instance;
 
 	void Awake() {
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 		move = GetComponent<PlayerMovement>();
 		weapon = GetComponentInChildren<WeaponManagement> ();
 		//actions = GetComponent<PlayerInteraction>();
@@ -31,17 +34,22 @@ public class PlayerCore : StateBehaviour {
 	public override void UpdatePlaying() {
 		bindings = InputManager._instance.bindings;
 		if(bindings.pauseGame.WasPressed) {
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
 			Globals.gameState = GameState.Paused;
 		}
 		if (playerState == inputState.free) {
 			move.MovePlayer(new Vector3(bindings.move.X, 0, bindings.move.Y));
 			move.CameraMove(new Vector3(-bindings.look.Y, bindings.look.X, 0));
 
-			if (bindings.attack.WasPressed)
+			if (bindings.fire.WasPressed) {
 				weapon.Fire ();
+				blinkBall = weapon.blinkBall;
+			}
 //
-//			if (bindings.attackUtility.WasPressed)
-//				actions.SecondaryAction();
+			if (bindings.blink.WasPressed && blinkBall != null) {
+				blinkBall.Teleport (gameObject);
+			}
 
 			if (Input.GetKeyDown(KeyCode.V)) {
 				if(QualitySettings.vSyncCount != 0)
@@ -54,6 +62,8 @@ public class PlayerCore : StateBehaviour {
 
 	public override void UpdatePaused() {
 		if (bindings.pauseGame.WasPressed) {
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
 			Globals.gameState = GameState.Playing;
 		}
 	}
