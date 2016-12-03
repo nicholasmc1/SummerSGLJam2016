@@ -21,6 +21,7 @@ public class PlayerCore : StateBehaviour {
 		//stats = GetComponent<EntityStats>();
 		//stats.UpdateHealth(0,0,0);
 		move.head = headDirection;
+		move.head.transform.parent = null;
 		//move.Init();
 		//actions.ChangeHotbarItem(0);
 		//actions.cameraDirection = headDirection;
