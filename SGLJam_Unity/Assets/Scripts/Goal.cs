@@ -17,9 +17,7 @@ public class Goal : StateBehaviour {
 
 	void OnCollisionEnter (Collision collision)
 	{
-		if(collision.gameObject.name == "Player")
-		{
+		if(SceneManager.sceneCount > 1 && collision.gameObject.name == "Player")
 			RootSceneManager.Instance.SetupTransitionRoom();
-		}
 	}
 }

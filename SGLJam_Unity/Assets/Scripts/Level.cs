@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level : StateBehaviour {
 	public GameObject previousDoor;
@@ -10,7 +11,8 @@ public class Level : StateBehaviour {
 	// Use this for initialization
 	void Awake () 
 	{
-		DelayAwake ();
+        if(SceneManager.sceneCount > 1)
+		    DelayAwake ();
 	}
 
 	public void SetTransform(Level transitionRoom) {

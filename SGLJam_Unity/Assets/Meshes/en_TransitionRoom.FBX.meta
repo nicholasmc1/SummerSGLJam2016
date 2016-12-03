@@ -10,23 +10,28 @@ ModelImporter:
     100004: en_TransitionDoor2
     100006: //RootNode
     100008: pr_Goal
+    100010: tunnelProxy
     400000: en_LoadingTunnel
     400002: en_TransitionDoor1
     400004: en_TransitionDoor2
     400006: //RootNode
     400008: pr_Goal
+    400010: tunnelProxy
     2300000: en_LoadingTunnel
     2300002: en_TransitionDoor1
     2300004: en_TransitionDoor2
     2300006: pr_Goal
+    2300008: tunnelProxy
     3300000: en_LoadingTunnel
     3300002: en_TransitionDoor1
     3300004: en_TransitionDoor2
     3300006: pr_Goal
+    3300008: tunnelProxy
     4300000: en_LoadingTunnel
     4300002: en_TransitionDoor1
     4300004: en_TransitionDoor2
     4300006: pr_Goal
+    4300008: tunnelProxy
   materials:
     importMaterials: 1
     materialName: 1
