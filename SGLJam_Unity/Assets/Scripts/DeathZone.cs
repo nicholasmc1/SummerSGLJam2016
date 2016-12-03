@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class DeathZone : MonoBehaviour 
 {
-    void OnCollisionEnter(Collision col)
+    public Transform respawn;
+
+    void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.tag == "Player")
         {
-            Debug.Log("D.E.Dead");
+            col.transform.position = respawn.position;
         }
 
     }
