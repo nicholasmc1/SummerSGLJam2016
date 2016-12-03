@@ -74,9 +74,6 @@ public class PlayerMovement: StateBehaviour
 		{
 			newMove.x = dir.x;
 			newMove.z = dir.z;
-			//clamping inputs on x and z slightly to make the player feel better at moving forward
-			newMove.x = Mathf.Clamp(newMove.x, -0.9f, 0.9f);
-			newMove.z = Mathf.Clamp(newMove.z, -0.8f, 1);
 
 			newMove = new Vector3(transform.TransformDirection(newMove).x * moveSpeed, newMove.y, transform.TransformDirection(newMove).z * moveSpeed);
 			if(_movState != movementState.blink)

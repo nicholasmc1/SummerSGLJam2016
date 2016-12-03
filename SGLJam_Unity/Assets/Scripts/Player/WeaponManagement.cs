@@ -26,8 +26,11 @@ public class WeaponManagement : StateBehaviour {
 		}
 		Debug.Log ("Pew!");
 		_blinkBall = Instantiate (projectilePrefab, shootOrigin.position, shootOrigin.rotation) as GameObject;
-
-		_blinkBall.GetComponent<Rigidbody> ().velocity = transform.TransformDirection (new Vector3 (0, 0, speed));
+		Vector3 v = transform.parent.forward * speed;
+		v += playerMove.velocity;
+		v = Vector3.ClampMagnitude (v, 75);
+		Debug.Log (v);
+		_blinkBall.GetComponent<Rigidbody> ().velocity = v;
         return _blinkBall.GetComponent<BlinkBall>();
 	}
 }

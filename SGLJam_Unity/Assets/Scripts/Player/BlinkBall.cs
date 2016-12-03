@@ -27,7 +27,7 @@ public class BlinkBall : StateBehaviour {
 
 	IEnumerator SetVelocity(GameObject obj) {
 		yield return new WaitForEndOfFrame ();
-		obj.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody> ().velocity;
+		obj.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody> ().velocity * 2 / 3;
 		yield return new WaitForSeconds (0.1f);
 		player._movState = PlayerMovement.movementState.standing;
 		Destroy (gameObject);
