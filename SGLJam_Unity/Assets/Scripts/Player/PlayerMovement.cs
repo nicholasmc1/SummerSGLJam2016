@@ -36,6 +36,7 @@ public class PlayerMovement: StateBehaviour
 	private Vector3 surfaceNormal = new Vector3(0, 1, 0);
 	[HideInInspector]
 	public float timeSinceGrounded;
+	private Vector3 prevVel;
 
 	public void Awake()
 	{
@@ -60,8 +61,11 @@ public class PlayerMovement: StateBehaviour
 		transform.rotation = Quaternion.Euler(0, newLook.y, 0);
 
 		if (PlayerCore._instance.playerState != PlayerCore.inputState.ragdoll) {
-			head.position = new Vector3 (transform.position.x, transform.position.y + eyeHeight, transform.position.z);
-			head.rotation = Quaternion.Euler(newLook);
+			//if (!PlayerCore._instance.peeking) {
+				head.position = new Vector3 (transform.position.x, transform.position.y + eyeHeight, transform.position.z);
+				head.rotation = Quaternion.Euler(newLook);
+			//}
+
 		}
 
 		Vector3 flatMag = move.velocity;
@@ -105,6 +109,7 @@ public class PlayerMovement: StateBehaviour
 		if (grounded) {
 			move.velocity = newMove;
 		}
+		prevVel = move.velocity;
 //		else
 //			move.velocity = new Vector3(0, 0, 0);
 
@@ -131,4 +136,13 @@ public class PlayerMovement: StateBehaviour
 				surfaceNormal = new Vector3(0, 1, 0);
 		}
 	}
+
+	void OnCollisionEnter(Collision col)
+	{
+		if (Vector3.Dot (col.contacts[0].normal, prevVel) < - 	10 && prevVel.magnitude >= 20){
+			PlayerCore._instance.Die ();
+		}
+
+	}
+
 }

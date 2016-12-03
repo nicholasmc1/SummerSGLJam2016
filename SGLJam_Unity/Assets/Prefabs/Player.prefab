@@ -311,7 +311,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -377,6 +377,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e5765d683a86442ac2a1c360317c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
+  peeking: 0
+  currentRespawnPoint: {fileID: 0}
   ragdollPrefab: {fileID: 1092881870398894, guid: db342097cb5c0dd46b337ac4452eb2eb,
     type: 2}
   headDirection: {fileID: 4272354098934204}
@@ -396,7 +399,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1446133421050272, guid: 95d0cbd972162b94a8407d896d37c102,
     type: 2}
   shootOrigin: {fileID: 4693758674062220}
-  speed: 25
+  charging: 0
+  maxSpeed: 25
 --- !u!114 &114817834574250410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,7 +450,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1760192089657256}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 

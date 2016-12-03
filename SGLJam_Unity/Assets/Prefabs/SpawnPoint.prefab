@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4100502655398170}
+  - component: {fileID: 114896901739656902}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -203,6 +204,17 @@ Light:
   m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114896901739656902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763111008280122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6898f9412f9a9fa42912c1a3e5c11101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198705381072914476
 ParticleSystem:
   m_ObjectHideFlags: 1

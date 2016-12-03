@@ -4,10 +4,13 @@ using InControl;
 
 public class PlayerCore : StateBehaviour {
 	private PlayerMovement move;
-	private WeaponManagement weapon;
+	[HideInInspector]
+	public WeaponManagement weapon;
 	private BlinkBall blinkBall;
 	private RagdollManagement ragdoll;
-
+	[HideInInspector]
+	public bool peeking;
+	public Transform currentRespawnPoint;
 	public GameObject ragdollPrefab;
 	public Transform headDirection;
 	public enum inputState{free, ragdoll};
@@ -16,6 +19,7 @@ public class PlayerCore : StateBehaviour {
 	public inputState playerState;
 	public PlayerBindings bindings;
 	public static PlayerCore _instance;
+	public float shootTimer;
 
 	void Awake() 
 	{
@@ -41,6 +45,7 @@ public class PlayerCore : StateBehaviour {
 	}
 
 	public override void UpdatePlaying() {
+		shootTimer += Time.deltaTime;
 		bindings = InputManager._instance.bindings;
 		if(bindings.pauseGame.WasPressed) {
 			Cursor.lockState = CursorLockMode.None;
@@ -50,12 +55,24 @@ public class PlayerCore : StateBehaviour {
 		if (playerState == inputState.free) {
 			move.MovePlayer(new Vector3(bindings.move.X, 0, bindings.move.Y));
 
-			if (bindings.fire.WasPressed) {
-				blinkBall = weapon.Fire ();
+			if (bindings.fire.WasPressed && shootTimer > 0.25) {
+				weapon.charging = true;
 			}
-//
-			if (bindings.blink.WasPressed) {
+
+			if (bindings.fire.WasReleased && weapon.charging) {
+				blinkBall = weapon.Fire ();
+				shootTimer = 0;
+			}
+
+			if (bindings.blink.IsPressed) {
+				blinkBall.SetPlayer (gameObject);
+				//peeking = true;
+			}
+
+			if (bindings.blink.WasReleased) {
 				if (blinkBall != null) {
+					peeking = false;
+					weapon.GetComponentInChildren<SkinnedMeshRenderer> ().enabled = true;
 					blinkBall.Teleport (gameObject);
 				} else {
 					// Play an error sound or something;
@@ -67,7 +84,7 @@ public class PlayerCore : StateBehaviour {
 					QualitySettings.vSyncCount = 0;
 				else
 					QualitySettings.vSyncCount = 1;
-			}
+				}
 		}
 
 		move.CameraMove(new Vector3(-bindings.look.Y, bindings.look.X, 0));
@@ -90,4 +107,12 @@ public class PlayerCore : StateBehaviour {
 			Globals.gameState = GameState.Playing;
 		}
 	}
+
+	public void Die() {
+		GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		move.grounded = true;
+		move.timeSinceGrounded = 0;
+		transform.position = currentRespawnPoint.position;
+	}
+
 }
