@@ -56,12 +56,11 @@ public class PlayerCore : StateBehaviour {
 			move.MovePlayer(new Vector3(bindings.move.X, 0, bindings.move.Y));
 
 			if (bindings.fire.WasPressed && shootTimer > 0.25) {
-				weapon.charging = true;
+				weapon.PrepareToFire ();
 			}
 
 			if (bindings.fire.WasReleased && weapon.charging) {
 				blinkBall = weapon.Fire ();
-				shootTimer = 0;
 			}
 
 			if (bindings.blink.IsPressed) {
@@ -71,7 +70,8 @@ public class PlayerCore : StateBehaviour {
 
 			if (bindings.blink.WasReleased) {
 				if (blinkBall != null) {
-					peeking = false;
+					shootTimer = 0;
+					//peeking = false;
 					weapon.GetComponentInChildren<SkinnedMeshRenderer> ().enabled = true;
 					blinkBall.Teleport (gameObject);
 				} else {
