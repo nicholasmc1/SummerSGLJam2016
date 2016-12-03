@@ -19,7 +19,7 @@ Material:
         name: _MainTex
       second:
         m_Texture: {fileID: 2800000, guid: b712c43bca6246041a731ebb078b69db, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
+        m_Scale: {x: 0.25, y: 0.25}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
@@ -48,10 +48,10 @@ Material:
       second: 4
     - first:
         name: _MoveSpeedU
-      second: 0.2
+      second: 0.3
     - first:
         name: _MoveSpeedV
-      second: -0.2
+      second: 0.3
     - first:
         name: _Multiply
       second: 5
