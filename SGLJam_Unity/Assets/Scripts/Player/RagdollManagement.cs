@@ -36,12 +36,12 @@ public class RagdollManagement : StateBehaviour {
 	public void Activate () {
 		//ragdollParent.SetActive (true); 
 		Spawn();
-		_ragdoll.position = player.transform.position;
+		ragdollParent.transform.position = player.transform.position;
 		foreach (Rigidbody rigidbody in ragdollParent.GetComponentsInChildren<Rigidbody> ()) {
 			rigidbody.velocity = player.GetComponentInChildren<Rigidbody> ().velocity;
 		}
 		move.head.gameObject.GetComponent<RagdollCamera> ().lookAtTarget = _ragdoll;
-		move.head.gameObject.GetComponentInChildren <MeshRenderer> ().enabled = false;
+		move.head.gameObject.GetComponentInChildren <SkinnedMeshRenderer> ().enabled = false;
 		_flopping = true;
 	}
 
@@ -49,7 +49,7 @@ public class RagdollManagement : StateBehaviour {
 		player.transform.position = _ragdoll.transform.position;
 		//ragdollParent.SetActive (false); 
 		_flopping = false;
-		move.head.gameObject.GetComponentInChildren<MeshRenderer> ().enabled = true;
+        move.head.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
 		Destroy(ragdollParent);
 	}
 }
