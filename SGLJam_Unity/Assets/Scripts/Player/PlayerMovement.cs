@@ -39,6 +39,8 @@ public class PlayerMovement: StateBehaviour
 	public float timeSinceGrounded;
 	private Vector3 prevVel;
 
+	public float blinkTimer = 0;
+
 	public void Awake()
 	{
 		move = GetComponent<Rigidbody>();
@@ -50,6 +52,11 @@ public class PlayerMovement: StateBehaviour
 
 	public override void UpdatePlaying()
 	{
+		blinkTimer += Time.deltaTime;
+		if (_movState == movementState.blink && blinkTimer > 0.2f) {
+			_movState = movementState.standing;
+		}
+
 		timeSinceGrounded += Time.deltaTime;
 		if (timeSinceGrounded > 0.1f)
 		{
