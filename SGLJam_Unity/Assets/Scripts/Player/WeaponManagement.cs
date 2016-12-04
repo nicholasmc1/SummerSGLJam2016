@@ -12,7 +12,6 @@ public class WeaponManagement : StateBehaviour {
 	public float chargeSpeed;
 	private Rigidbody playerMove;
 	private float _timeElapsed;
-	private float _chargeAdd;
 	private float _scale;
 	[HideInInspector]
 	public Animator _animator;
@@ -23,6 +22,7 @@ public class WeaponManagement : StateBehaviour {
 	void Awake () {
 		StartCoroutine (SetPlayer ());
 		_animator = GetComponentInChildren<Animator> ();
+		speed = 20;
 	}
 
 	IEnumerator SetPlayer () {
@@ -47,7 +47,6 @@ public class WeaponManagement : StateBehaviour {
 	public override void UpdatePlaying() {
 		if (charging && _blinkBall != null) {
 			if (speed < maxSpeed) {
-				_chargeAdd = Time.deltaTime * chargeSpeed * maxSpeed;
 				speed += Time.deltaTime * chargeSpeed * maxSpeed;
 				_timeElapsed += Time.deltaTime;
 				//Debug.Log ("Speed: " + speed + "  Time: " + _timeElapsed);

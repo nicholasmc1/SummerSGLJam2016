@@ -40,7 +40,7 @@ public class PlayerHUD : MonoBehaviour {
 
         charge = PlayerCore._instance.weapon.maxSpeed - PlayerCore._instance.weapon.speed;
 
-        chargeMeter.fillAmount = charge / 10;
+        chargeMeter.fillAmount = 1 - charge / 10;
 	}
 
 
