@@ -3,7 +3,8 @@ using System.Collections;
 using InControl;
 
 public class PlayerCore : StateBehaviour {
-	private PlayerMovement move;
+	[HideInInspector]
+	public PlayerMovement move;
 	[HideInInspector]
 	public WeaponManagement weapon;
 	private BlinkBall blinkBall;
@@ -19,7 +20,7 @@ public class PlayerCore : StateBehaviour {
 	public inputState playerState;
 	public PlayerBindings bindings;
 	public static PlayerCore _instance;
-	[HideInInspector]
+
 	public float shootTimer;
 	public GameObject HUDPrefab;
 
@@ -58,6 +59,7 @@ public class PlayerCore : StateBehaviour {
 
 			if (bindings.fire.WasReleased && weapon.charging) {
 				blinkBall = weapon.Fire ();
+				weapon.charging = false;
 			}
 
 			if (bindings.blink.IsPressed) {

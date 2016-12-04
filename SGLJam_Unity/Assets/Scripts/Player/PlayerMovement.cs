@@ -77,6 +77,7 @@ public class PlayerMovement: StateBehaviour
 		} else {
 			_camera.fieldOfView = Mathf.Lerp (_camera.fieldOfView, 80, 0.2f); 
 		}
+
 		if (AudioManager._instance != null && move.velocity.magnitude > 7.7f) {
 			AudioManager._instance.FastMusic ((move.velocity.magnitude - 7.6f ) / 12);
 		} else {

@@ -37,6 +37,7 @@ public class RagdollManagement : StateBehaviour {
 		//ragdollParent.SetActive (true); 
 		Destroy(PlayerCore._instance.weapon._blinkBall);
 		PlayerCore._instance.weapon._animator.SetFloat ("charge", 0);
+		PlayerCore._instance.weapon.charging = false;
 		Spawn();
 		ragdollParent.transform.position = player.transform.position;
 		foreach (Rigidbody rigidbody in ragdollParent.GetComponentsInChildren<Rigidbody> ()) {
