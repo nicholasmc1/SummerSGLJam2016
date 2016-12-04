@@ -34,8 +34,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1258863822086634}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.97854114, y: 0.33622444, z: -0.75222087}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -17.98, y: -0.66, z: 3.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,5 +80,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef714112b312a124384d44c91bcd9243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chargeSource: {fileID: 0}
+  fireSource: {fileID: 0}
+  blinkSource: {fileID: 0}
+  deathSource: {fileID: 0}
   ambClip: {fileID: 8300000, guid: 67b29f000a3d49a4a938428daabc8311, type: 3}
   pumpClip: {fileID: 8300000, guid: bfbd0ca8edb31ae4691d901a151b3915, type: 3}
+  whooshClip: {fileID: 8300000, guid: 8a28b80359124114a984d0217d525876, type: 3}
+  chargeClip: {fileID: 8300000, guid: 4a09ad8ed27d0ee44b69c3e0323888cb, type: 3}
+  fireClip: {fileID: 8300000, guid: 6dbf24c00a633d0448dad503300f75a2, type: 3}
+  blinkClip: {fileID: 8300000, guid: 8cfdf23da74c0a141b6e58877981a7c3, type: 3}
+  velocityDeathClip: {fileID: 8300000, guid: b5ca2fdc1885d1948b5da5d61f9d1e80, type: 3}

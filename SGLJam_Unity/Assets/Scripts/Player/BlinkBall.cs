@@ -45,6 +45,7 @@ public class BlinkBall : StateBehaviour {
 		player._movState = PlayerMovement.movementState.blink;
 		player.grounded = false;
 		player.CameraMove (_rigid.velocity.normalized); 
+		AudioManager._instance.blinkSource.Play ();
 		obj.transform.position = transform.position;
 		StartCoroutine (SetVelocity (obj));
         foreach(MeshRenderer rend in GetComponentsInChildren<MeshRenderer>())

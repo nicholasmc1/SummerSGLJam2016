@@ -79,7 +79,7 @@ public class PlayerMovement: StateBehaviour
 		}
 
         if (AudioManager._instance != null)
-            AudioManager._instance.UpadteMusicVol(move.velocity.magnitude/15);
+			AudioManager._instance.FastMusic(move.velocity.magnitude/15);
 	}
 
 	public void MovePlayer(Vector3 dir)
@@ -163,6 +163,7 @@ public class PlayerMovement: StateBehaviour
                 if (Vector3.Dot(newNormal, prevVel) < -10)
                 {
                     PlayerCore._instance.Die();
+					AudioManager._instance.deathSource.Play();
                     Debug.Log(prevVel + "VEL");
                 }
             }

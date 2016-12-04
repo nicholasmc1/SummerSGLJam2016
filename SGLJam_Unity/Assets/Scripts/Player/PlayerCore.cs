@@ -32,14 +32,13 @@ public class PlayerCore : StateBehaviour {
             move = GetComponent<PlayerMovement>();
             weapon = GetComponentInChildren<WeaponManagement>();
             GameObject _ragdoll = Instantiate(ragdollPrefab);
+			Instantiate (HUDPrefab);
             ragdoll = _ragdoll.GetComponent<RagdollManagement>();
             move.head = headDirection;
             move.head.transform.parent = null;
         }
         else
             Destroy(this.gameObject);
-		
-		
 	}
 
 	public override void UpdatePlaying() {
@@ -110,13 +109,14 @@ public class PlayerCore : StateBehaviour {
 
 	public void Die() {
         //Debug.Log("Die");
+		headDirection.gameObject.GetComponent<Camera>().fieldOfView = 179;
+		move._movState = PlayerMovement.movementState.standing;
 		GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		move.grounded = true;
 		move.timeSinceGrounded = 0;
 		if (blinkBall != null) {
 			Destroy (blinkBall.gameObject);
 		}
-		move._movState = PlayerMovement.movementState.standing;
 		transform.position = currentRespawnPoint.position;
         currentRespawnPoint.GetComponent<SpawnPoint>().RespawnFX();
 	}
