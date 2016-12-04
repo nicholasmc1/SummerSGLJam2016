@@ -312,7 +312,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level1
+          m_StringArgument: RootScene
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -686,8 +686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f1ec9e55b15504c9606fbe64f1a516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 0}
-  stage: {fileID: 0}
 --- !u!1 &1186154103
 GameObject:
   m_ObjectHideFlags: 0
