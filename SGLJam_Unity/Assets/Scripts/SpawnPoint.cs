@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPoint : MonoBehaviour {
-
+public class SpawnPoint : MonoBehaviour 
+{
+    public ParticleSystem par;
 	void Awake () {
 		StartCoroutine (AwakeDelay ());
 	}
@@ -12,9 +13,13 @@ public class SpawnPoint : MonoBehaviour {
 		yield return new WaitForEndOfFrame ();
 		PlayerCore._instance.currentRespawnPoint = this.transform;
 	}
+
+    public void RespawnFX()
+    {
+        //PLAY SOUND HERE
+        if (par != null)
+            par.Play();
+
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

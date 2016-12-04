@@ -116,6 +116,7 @@ public class PlayerCore : StateBehaviour {
 		move.grounded = true;
 		move.timeSinceGrounded = 0;
 		transform.position = currentRespawnPoint.position;
+        currentRespawnPoint.GetComponent<SpawnPoint>().RespawnFX();
 	}
 
 }
