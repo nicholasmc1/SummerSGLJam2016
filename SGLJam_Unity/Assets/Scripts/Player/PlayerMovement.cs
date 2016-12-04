@@ -50,6 +50,15 @@ public class PlayerMovement: StateBehaviour
 
 	public override void UpdatePlaying()
 	{
+		if (_movState == movementState.blink) {
+			if (blinkTimer > 0.2f) {
+				_movState = movementState.standing;
+				blinkTimer = 0;
+			} else {
+				blinkTimer += Time.deltaTime;
+			}
+		}
+
 		timeSinceGrounded += Time.deltaTime;
 		if (timeSinceGrounded > 0.1f)
 		{
