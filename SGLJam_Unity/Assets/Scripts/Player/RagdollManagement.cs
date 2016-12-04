@@ -56,4 +56,11 @@ public class RagdollManagement : StateBehaviour {
         player.GetComponent<Rigidbody>().isKinematic = false;
 		Destroy(ragdollParent);
 	}
+
+	public void Die() {
+		_flopping = false;
+		move.head.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+		player.GetComponent<Rigidbody>().isKinematic = false;
+		Destroy(ragdollParent);
+	}
 }

@@ -109,6 +109,10 @@ public class PlayerCore : StateBehaviour {
 
 	public void Die() {
         //Debug.Log("Die");
+		if (playerState == inputState.ragdoll) {
+			playerState = inputState.free;
+			ragdoll.Die ();
+		}
 		headDirection.gameObject.GetComponent<Camera>().fieldOfView = 179;
 		move._movState = PlayerMovement.movementState.standing;
 		GetComponent<Rigidbody> ().velocity = Vector3.zero;

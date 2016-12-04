@@ -62,7 +62,9 @@ public class WeaponManagement : StateBehaviour {
 		} else {
 			speed = 20;
 			_animator.SetFloat ("charge", 0); 
-			_chargeSource.volume = Mathf.Lerp (_chargeSource.volume, 0, 1f);
+			if (_chargeSource != null) {
+				_chargeSource.volume = Mathf.Lerp (_chargeSource.volume, 0, 1f);
+			}
 		}
 	}
 
