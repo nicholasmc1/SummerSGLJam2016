@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
 			// Attach clips to sources
             ambSource.clip = ambClip;
             ambSource.loop = true;
-			ambSource.volume = 0.7f;
+			ambSource.volume = 0.5f;
             pumpSource.clip = pumpClip;
             pumpSource.loop = true;
 			whooshSource.clip = whooshClip;

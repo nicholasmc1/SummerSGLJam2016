@@ -1878,7 +1878,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh37718
+  m_Name: pb_Mesh16814
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2015,7 +2015,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4100502655398170, guid: 68157b531e4ec7245906528bb7121e94, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -1.29
       objectReference: {fileID: 0}
     - target: {fileID: 4100502655398170, guid: 68157b531e4ec7245906528bb7121e94, type: 2}
       propertyPath: m_LocalPosition.y
