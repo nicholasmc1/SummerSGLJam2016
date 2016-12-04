@@ -26,6 +26,7 @@ public class PlayerMovement: StateBehaviour
 	private Vector3 newLook;
 	[HideInInspector]
 	public Transform head;
+	private Camera _camera;
 	private float sens = 5f;
 
 	//crouching info
@@ -44,7 +45,7 @@ public class PlayerMovement: StateBehaviour
 		myCol = GetComponentInChildren<CapsuleCollider>();
 		hasInit = true;
 		newLook = transform.rotation.eulerAngles;
-
+		_camera = head.GetComponent<Camera> ();
 	}
 
 	public override void UpdatePlaying()
@@ -70,6 +71,12 @@ public class PlayerMovement: StateBehaviour
 
 		Vector3 flatMag = move.velocity;
 		flatMag.y = 0;
+
+		if (_movState == movementState.blink) {
+			_camera.fieldOfView = Mathf.Lerp (_camera.fieldOfView, 179, 0.5f);
+		} else {
+			_camera.fieldOfView = Mathf.Lerp (_camera.fieldOfView, 80, 0.2f); 
+		}
 	}
 
 	public void MovePlayer(Vector3 dir)
