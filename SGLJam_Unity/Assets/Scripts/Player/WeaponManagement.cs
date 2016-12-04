@@ -12,8 +12,11 @@ public class WeaponManagement : StateBehaviour {
 	public float chargeSpeed;
 	private Rigidbody playerMove;
 	private float _timeElapsed;
+	private float _chargeAdd;
+	private float _scale;
 
     private GameObject _blinkBall;
+	private GameObject _particleChild;
 
 	void Awake () {
 		StartCoroutine (SetPlayer ());
@@ -31,25 +34,25 @@ public class WeaponManagement : StateBehaviour {
 		charging = true;
 		speed = 20;
 		_blinkBall = Instantiate (projectilePrefab, shootOrigin.position, shootOrigin.rotation) as GameObject;
+		_particleChild = _blinkBall.GetComponentInChildren<ParticleSystem> ().gameObject;
 		_blinkBall.transform.parent = shootOrigin;
+		_particleChild.SetActive (false);
 		_blinkBall.GetComponent<Rigidbody> ().isKinematic = true;
 	}
 
 	public override void UpdatePlaying() {
 		if (charging && _blinkBall != null) {
 			if (speed < maxSpeed) {
+				_chargeAdd = Time.deltaTime * chargeSpeed * maxSpeed;
 				speed += Time.deltaTime * chargeSpeed * maxSpeed;
 				_timeElapsed += Time.deltaTime;
-				Debug.Log ("Speed: " + speed + "  Time: " + _timeElapsed);
+				//Debug.Log ("Speed: " + speed + "  Time: " + _timeElapsed);
 			}
-
+			if (_blinkBall.transform.localScale.magnitude < 0.606) {
+				_blinkBall.transform.localScale += new Vector3 (_scale, _scale, _scale);
+				_scale += Time.deltaTime * _chargeAdd;
+			}
 		}
-	}
-
-	public override void FixedUpdatePlaying() {
-//		if (charging && _blinkBall != null) {
-//			_blinkBall.transform.position = shootOrigin.position;
-//		}
 	}
 
 	public BlinkBall Fire() {
@@ -59,8 +62,9 @@ public class WeaponManagement : StateBehaviour {
 		v += playerMove.velocity;
 		v = Vector3.ClampMagnitude (v, 75);
 		//Debug.Log (v);
-		_blinkBall.GetComponent<Rigidbody> ().isKinematic = false;
 		_blinkBall.transform.parent = null;
+		_blinkBall.GetComponent<Rigidbody> ().isKinematic = false;
+		_particleChild.SetActive (true);
 		_blinkBall.GetComponent<Rigidbody> ().velocity = v;
 		_timeElapsed = 0;
         return _blinkBall.GetComponent<BlinkBall>();
