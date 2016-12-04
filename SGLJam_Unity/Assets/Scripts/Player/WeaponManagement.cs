@@ -18,11 +18,18 @@ public class WeaponManagement : StateBehaviour {
 	[HideInInspector]
     public GameObject _blinkBall;
 	private GameObject _particleChild;
+	private AudioSource _chargeSource;
 
 	void Awake () {
-		StartCoroutine (SetPlayer ());
+		StartCoroutine (DelayAwake ());
 		_animator = GetComponentInChildren<Animator> ();
 		speed = 20;
+	}
+
+	IEnumerator DelayAwake() {
+		StartCoroutine (SetPlayer ());
+		yield return new WaitForEndOfFrame ();
+		_chargeSource = AudioManager._instance.chargeSource;
 	}
 
 	IEnumerator SetPlayer () {
@@ -46,19 +53,26 @@ public class WeaponManagement : StateBehaviour {
 
 	public override void UpdatePlaying() {
 		if (charging && _blinkBall != null) {
+			_chargeSource.volume = Mathf.Lerp(_chargeSource.volume, 0.8f, 0.8f);
 			if (speed < maxSpeed) {
 				speed += Time.deltaTime * chargeSpeed * maxSpeed;
 				_timeElapsed += Time.deltaTime;
 				//Debug.Log ("Speed: " + speed + "  Time: " + _timeElapsed);
 			}
+		} else {
+			speed = 20;
+			_animator.SetFloat ("charge", 0); 
+			_chargeSource.volume = Mathf.Lerp (_chargeSource.volume, 0, 1f);
 		}
 	}
 
 	public BlinkBall Fire() {
 		//Debug.Log ("Pew!");
 		Cursor.lockState = CursorLockMode.Locked;
-		charging = false;
 		if (_blinkBall != null) {
+			charging = false;
+			AudioManager._instance.chargeSource.volume = 0;
+			AudioManager._instance.fireSource.Play ();
 			Vector3 v = transform.parent.forward * speed;
 			v += playerMove.velocity;
 			v = Vector3.ClampMagnitude (v, 75);

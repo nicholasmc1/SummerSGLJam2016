@@ -32,14 +32,13 @@ public class PlayerCore : StateBehaviour {
             move = GetComponent<PlayerMovement>();
             weapon = GetComponentInChildren<WeaponManagement>();
             GameObject _ragdoll = Instantiate(ragdollPrefab);
+			Instantiate (HUDPrefab);
             ragdoll = _ragdoll.GetComponent<RagdollManagement>();
             move.head = headDirection;
             move.head.transform.parent = null;
         }
         else
             Destroy(this.gameObject);
-		
-		
 	}
 
 	public override void UpdatePlaying() {
