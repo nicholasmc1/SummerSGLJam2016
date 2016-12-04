@@ -23,6 +23,7 @@ public class PlayerCore : StateBehaviour {
 
 	public float shootTimer;
 	public GameObject HUDPrefab;
+    public LayerMask hitMask;
 
 	void Awake() 
 	{
@@ -42,6 +43,16 @@ public class PlayerCore : StateBehaviour {
             Destroy(this.gameObject);
 	}
 
+    bool CheckWallDistance() {
+        RaycastHit wallHit = new RaycastHit();
+        Ray newRay = new Ray(headDirection.position, headDirection.forward);
+        if (Physics.Raycast(newRay, out wallHit, 1, hitMask) && wallHit.distance <= 0.9f)
+        {
+            return false;
+        }
+        return true;
+    }
+
 	public override void UpdatePlaying() {
 		shootTimer += Time.deltaTime;
 		bindings = InputManager._instance.bindings;
@@ -54,12 +65,17 @@ public class PlayerCore : StateBehaviour {
 			move.MovePlayer(new Vector3(bindings.move.X, 0, bindings.move.Y));
 
 			if (bindings.fire.IsPressed && shootTimer > 0.25 && !weapon.charging) {
-				weapon.PrepareToFire ();
+                if (CheckWallDistance()) {
+                    weapon.PrepareToFire();
+                }
 			}
 
 			if (bindings.fire.WasReleased && weapon.charging) {
-				blinkBall = weapon.Fire ();
-				weapon.charging = false;
+				
+                if (CheckWallDistance()) {
+                    blinkBall = weapon.Fire();
+                    weapon.charging = false;
+                }
 			}
 
 			if (bindings.blink.IsPressed) {

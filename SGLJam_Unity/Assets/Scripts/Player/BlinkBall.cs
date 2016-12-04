@@ -10,19 +10,18 @@ public class BlinkBall : StateBehaviour {
 	private float timer;
     public ParticleSystem bounceParticle;
 	[HideInInspector]
-	public Animator _animator;
     private AudioSource _source;
     public AudioClip bounceSound;
     public float bounceVol = 1;
     private bool canPlay =  true;
+	private Vector3 increment;
 
 	void Awake () {
 		_rigid = GetComponent<Rigidbody> ();
-		_animator = gameObject.GetComponent<Animator> ();
         _source = gameObject.AddComponent<AudioSource>();
         _source.clip = bounceSound;
         _source.volume = bounceVol;
-		_animator.SetTrigger ("Grow");
+		transform.localScale = Vector3.zero;
 		Destroy (gameObject, lifetime);
 	}
 
@@ -41,6 +40,10 @@ public class BlinkBall : StateBehaviour {
 				player.head.rotation = Quaternion.LookRotation (_rigid.velocity.normalized);
 			}
 		}*/
+//		if (transform.localScale.x < 0.3) {
+//			Debug.Log (transform.localScale);
+//			transform.localScale += new Vector3 (Time.deltaTime * 10, Time.deltaTime * 10, Time.deltaTime * 10);
+//		}
 	}
 
 	public void Teleport(GameObject obj) {
