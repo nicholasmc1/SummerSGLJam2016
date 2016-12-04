@@ -7,12 +7,16 @@ public class SpawnPoint : MonoBehaviour {
 	public ParticleSystem par;
 
 	void Awake () {
+        hit = true;
 		StartCoroutine (AwakeDelay ());
 	}
 
 	IEnumerator AwakeDelay() {
 		yield return new WaitForEndOfFrame ();
 		PlayerCore._instance.currentRespawnPoint = this.transform;
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        hit = false;
 	}
 	
 	// Update is called once per frame

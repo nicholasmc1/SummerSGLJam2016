@@ -68,7 +68,7 @@ public class RootSceneManager : MonoBehaviour {
 	public void CloseTransitionRoom() {
 		// Close door to previous level
 		_currentLevel.previousDoor.SetActive (true);
-		_transitionRoom.gameObject.SetActive (false);
+		//_transitionRoom.gameObject.SetActive (false);
 	}
 
 	// Call this once from inside the transition level
