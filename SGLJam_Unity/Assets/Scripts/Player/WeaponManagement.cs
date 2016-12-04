@@ -14,12 +14,14 @@ public class WeaponManagement : StateBehaviour {
 	private float _timeElapsed;
 	private float _chargeAdd;
 	private float _scale;
+	private Animator _animator;
 
     private GameObject _blinkBall;
 	private GameObject _particleChild;
 
 	void Awake () {
 		StartCoroutine (SetPlayer ());
+		_animator = GetComponentInChildren<Animator> ();
 	}
 
 	IEnumerator SetPlayer () {
@@ -31,6 +33,7 @@ public class WeaponManagement : StateBehaviour {
 		if (_blinkBall != null) {
 			Destroy(_blinkBall);
 		}
+		_animator.SetFloat ("charge", 1);
 		charging = true;
 		speed = 20;
 		_blinkBall = Instantiate (projectilePrefab, shootOrigin.position, shootOrigin.rotation) as GameObject;
@@ -48,15 +51,12 @@ public class WeaponManagement : StateBehaviour {
 				_timeElapsed += Time.deltaTime;
 				//Debug.Log ("Speed: " + speed + "  Time: " + _timeElapsed);
 			}
-			if (_blinkBall.transform.localScale.magnitude < 0.606) {
-				_blinkBall.transform.localScale += new Vector3 (_scale, _scale, _scale);
-				_scale += Time.deltaTime * _chargeAdd;
-			}
 		}
 	}
 
 	public BlinkBall Fire() {
 		//Debug.Log ("Pew!");
+		Cursor.lockState = CursorLockMode.Locked;
 		charging = false;
 		Vector3 v = transform.parent.forward * speed;
 		v += playerMove.velocity;
@@ -65,6 +65,8 @@ public class WeaponManagement : StateBehaviour {
 		_blinkBall.transform.parent = null;
 		_blinkBall.GetComponent<Rigidbody> ().isKinematic = false;
 		_particleChild.SetActive (true);
+		_animator.SetFloat ("charge", 0);
+		_animator.SetTrigger ("shoot");
 		_blinkBall.GetComponent<Rigidbody> ().velocity = v;
 		_timeElapsed = 0;
         return _blinkBall.GetComponent<BlinkBall>();
