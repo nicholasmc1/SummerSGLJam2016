@@ -8,10 +8,12 @@ public class BlinkBall : StateBehaviour {
 	private PlayerMovement player;
 	private Rigidbody _rigid;
 	private float timer;
+    public ParticleSystem bounceParticle;
 
 	void Awake () {
 		_rigid = GetComponent<Rigidbody> ();
 		Destroy (gameObject, lifetime);
+        
 	}
 
 	public void SetPlayer(GameObject obj) {
@@ -51,4 +53,16 @@ public class BlinkBall : StateBehaviour {
 		player._movState = PlayerMovement.movementState.standing;
 		Destroy (gameObject);
 	}
+    void OnCollisionEnter(Collision col)
+    {
+        PlayBounceEffect(col.contacts[0].point);
+    }
+    void PlayBounceEffect(Vector3 pos)
+    {
+        if (bounceParticle != null)
+            bounceParticle.Play();
+
+        //play sound here
+
+    }
 }
