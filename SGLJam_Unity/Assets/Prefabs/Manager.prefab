@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4241799636120778}
   - component: {fileID: 114430171351527070}
+  - component: {fileID: 114569999676545816}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -68,3 +69,16 @@ MonoBehaviour:
   nativeInputOverrideUpdateRate: 0
   nativeInputUpdateRate: 0
   customProfiles: []
+--- !u!114 &114569999676545816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258863822086634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef714112b312a124384d44c91bcd9243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ambClip: {fileID: 8300000, guid: 67b29f000a3d49a4a938428daabc8311, type: 3}
+  pumpClip: {fileID: 8300000, guid: bfbd0ca8edb31ae4691d901a151b3915, type: 3}

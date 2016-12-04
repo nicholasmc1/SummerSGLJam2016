@@ -19,29 +19,27 @@ public class PlayerCore : StateBehaviour {
 	public inputState playerState;
 	public PlayerBindings bindings;
 	public static PlayerCore _instance;
+	[HideInInspector]
 	public float shootTimer;
+	public GameObject HUDPrefab;
 
 	void Awake() 
 	{
-		if (PlayerCore._instance == null)
-			_instance = this;
-		else
-			Destroy (this.gameObject);
+        if (PlayerCore._instance == null)
+        {
+            _instance = this;
+            Cursor.lockState = CursorLockMode.Locked;
+            move = GetComponent<PlayerMovement>();
+            weapon = GetComponentInChildren<WeaponManagement>();
+            GameObject _ragdoll = Instantiate(ragdollPrefab);
+            ragdoll = _ragdoll.GetComponent<RagdollManagement>();
+            move.head = headDirection;
+            move.head.transform.parent = null;
+        }
+        else
+            Destroy(this.gameObject);
 		
-		Cursor.lockState = CursorLockMode.Locked;
-		move = GetComponent<PlayerMovement>();
-		weapon = GetComponentInChildren<WeaponManagement> ();
-		GameObject _ragdoll = Instantiate (ragdollPrefab);
-		ragdoll = _ragdoll.GetComponent<RagdollManagement> ();
-		//actions = GetComponent<PlayerInteraction>();
-		//stats = GetComponent<EntityStats>();
-		//stats.UpdateHealth(0,0,0);
-		move.head = headDirection;
-		move.head.transform.parent = null;
-		//move.Init();
-		//actions.ChangeHotbarItem(0);
-		//actions.cameraDirection = headDirection;
-		//move.actions = actions;
+		
 	}
 
 	public override void UpdatePlaying() {
@@ -111,10 +109,14 @@ public class PlayerCore : StateBehaviour {
 	}
 
 	public void Die() {
-        Debug.Log("Die");
+        //Debug.Log("Die");
 		GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		move.grounded = true;
 		move.timeSinceGrounded = 0;
+		if (blinkBall != null) {
+			Destroy (blinkBall.gameObject);
+		}
+		move._movState = PlayerMovement.movementState.standing;
 		transform.position = currentRespawnPoint.position;
         currentRespawnPoint.GetComponent<SpawnPoint>().RespawnFX();
 	}
