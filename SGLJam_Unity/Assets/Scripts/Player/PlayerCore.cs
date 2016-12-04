@@ -55,7 +55,7 @@ public class PlayerCore : StateBehaviour {
 		if (playerState == inputState.free) {
 			move.MovePlayer(new Vector3(bindings.move.X, 0, bindings.move.Y));
 
-			if (bindings.fire.WasPressed && shootTimer > 0.25) {
+			if (bindings.fire.IsPressed && shootTimer > 0.25 && !weapon.charging) {
 				weapon.PrepareToFire ();
 			}
 
