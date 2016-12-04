@@ -270,6 +270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 7
   bounceParticle: {fileID: 198215782335838636}
+  bounceSound: {fileID: 8300000, guid: d9b2563e1e321f74babae2cd2418efca, type: 3}
+  bounceVol: 1
 --- !u!135 &135114224991623726
 SphereCollider:
   m_ObjectHideFlags: 1

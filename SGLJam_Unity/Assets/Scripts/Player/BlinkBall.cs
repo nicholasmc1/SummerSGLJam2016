@@ -9,10 +9,17 @@ public class BlinkBall : StateBehaviour {
 	private Rigidbody _rigid;
 	private float timer;
     public ParticleSystem bounceParticle;
+    private AudioSource _source;
+    public AudioClip bounceSound;
+    public float bounceVol = 1;
+    private bool canPlay =  true;
 
 	void Awake () {
 		_rigid = GetComponent<Rigidbody> ();
 		Destroy (gameObject, lifetime);
+        _source = gameObject.AddComponent<AudioSource>();
+        _source.clip = bounceSound;
+        _source.volume = bounceVol;
         
 	}
 
@@ -59,10 +66,23 @@ public class BlinkBall : StateBehaviour {
     }
     void PlayBounceEffect(Vector3 pos)
     {
-        if (bounceParticle != null)
-            bounceParticle.Play();
+        if (canPlay)
+        {
+            if (bounceParticle != null)
+                bounceParticle.Play();
 
-        //play sound here
+            _source.Play();
+            StartCoroutine(FXDelay());
+            //play sound here
+        }
+
+    }
+
+    IEnumerator FXDelay()
+    {
+        canPlay = false;
+        yield return new WaitForSeconds(0.1f);
+        canPlay = true;
 
     }
 }
