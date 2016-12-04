@@ -484,15 +484,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114904372892810400, guid: b7b069f38e3ad9c4989343a459a1ac26,
+    - target: {fileID: 114306665668784568, guid: b7b069f38e3ad9c4989343a459a1ac26,
         type: 2}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: chargeSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114306665668784568, guid: b7b069f38e3ad9c4989343a459a1ac26,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 20467250047431632, guid: b7b069f38e3ad9c4989343a459a1ac26,
         type: 2}
-      propertyPath: m_RenderingPath
-      value: 1
+      propertyPath: field of view
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7b069f38e3ad9c4989343a459a1ac26, type: 2}
