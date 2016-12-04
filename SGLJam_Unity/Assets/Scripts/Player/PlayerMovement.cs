@@ -39,6 +39,8 @@ public class PlayerMovement: StateBehaviour
 	public float timeSinceGrounded;
 	private Vector3 prevVel;
 
+	public float blinkTimer = 0;
+
 	public void Awake()
 	{
 		move = GetComponent<Rigidbody>();
