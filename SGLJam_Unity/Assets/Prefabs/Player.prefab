@@ -386,6 +386,7 @@ MonoBehaviour:
   paused: 0
   playerState: 0
   shootTimer: 0
+  HUDPrefab: {fileID: 1326735774157082, guid: 628d3119d0aa68a4794a66f1585f8d68, type: 2}
 --- !u!114 &114306665668784568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -401,7 +402,7 @@ MonoBehaviour:
     type: 2}
   shootOrigin: {fileID: 4693758674062220}
   charging: 0
-  maxSpeed: 25
+  maxSpeed: 30
   speed: 0
   chargeSpeed: 0.5
   _animator: {fileID: 0}

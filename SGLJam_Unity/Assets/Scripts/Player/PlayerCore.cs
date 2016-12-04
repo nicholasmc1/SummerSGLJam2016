@@ -19,10 +19,13 @@ public class PlayerCore : StateBehaviour {
 	public inputState playerState;
 	public PlayerBindings bindings;
 	public static PlayerCore _instance;
+	[HideInInspector]
 	public float shootTimer;
+	public GameObject HUDPrefab;
 
 	void Awake() 
 	{
+		Instantiate (HUDPrefab);
 		if (PlayerCore._instance == null)
 			_instance = this;
 		else
@@ -111,10 +114,14 @@ public class PlayerCore : StateBehaviour {
 	}
 
 	public void Die() {
-        Debug.Log("Die");
+        //Debug.Log("Die");
 		GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		move.grounded = true;
 		move.timeSinceGrounded = 0;
+		if (blinkBall != null) {
+			Destroy (blinkBall.gameObject);
+		}
+		move._movState = PlayerMovement.movementState.standing;
 		transform.position = currentRespawnPoint.position;
         currentRespawnPoint.GetComponent<SpawnPoint>().RespawnFX();
 	}
