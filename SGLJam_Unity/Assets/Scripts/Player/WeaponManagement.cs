@@ -14,9 +14,10 @@ public class WeaponManagement : StateBehaviour {
 	private float _timeElapsed;
 	private float _chargeAdd;
 	private float _scale;
-	private Animator _animator;
-
-    private GameObject _blinkBall;
+	[HideInInspector]
+	public Animator _animator;
+	[HideInInspector]
+    public GameObject _blinkBall;
 	private GameObject _particleChild;
 
 	void Awake () {
@@ -58,17 +59,20 @@ public class WeaponManagement : StateBehaviour {
 		//Debug.Log ("Pew!");
 		Cursor.lockState = CursorLockMode.Locked;
 		charging = false;
-		Vector3 v = transform.parent.forward * speed;
-		v += playerMove.velocity;
-		v = Vector3.ClampMagnitude (v, 75);
-		//Debug.Log (v);
-		_blinkBall.transform.parent = null;
-		_blinkBall.GetComponent<Rigidbody> ().isKinematic = false;
-		_particleChild.SetActive (true);
-		_animator.SetFloat ("charge", 0);
-		_animator.SetTrigger ("shoot");
-		_blinkBall.GetComponent<Rigidbody> ().velocity = v;
-		_timeElapsed = 0;
-        return _blinkBall.GetComponent<BlinkBall>();
+		if (_blinkBall != null) {
+			Vector3 v = transform.parent.forward * speed;
+			v += playerMove.velocity;
+			v = Vector3.ClampMagnitude (v, 75);
+			//Debug.Log (v);
+			_blinkBall.transform.parent = null;
+			_blinkBall.GetComponent<Rigidbody> ().isKinematic = false;
+			_particleChild.SetActive (true);
+			_animator.SetFloat ("charge", 0);
+			_animator.SetTrigger ("shoot");
+			_blinkBall.GetComponent<Rigidbody> ().velocity = v;
+			_timeElapsed = 0;
+			return _blinkBall.GetComponent<BlinkBall> ();
+		}
+		return null;
 	}
 }

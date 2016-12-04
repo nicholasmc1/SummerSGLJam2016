@@ -64,7 +64,9 @@ public class PlayerCore : StateBehaviour {
 			}
 
 			if (bindings.blink.IsPressed) {
-				blinkBall.SetPlayer (gameObject);
+				if (blinkBall != null) {
+					blinkBall.SetPlayer (gameObject);
+				}
 				//peeking = true;
 			}
 
