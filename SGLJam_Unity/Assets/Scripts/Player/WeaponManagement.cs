@@ -45,7 +45,7 @@ public class WeaponManagement : StateBehaviour {
 		charging = true;
 		speed = 20;
 		_blinkBall = Instantiate (projectilePrefab, shootOrigin.position, shootOrigin.rotation) as GameObject;
-		_blinkBall.GetComponent<BlinkBall> ()._animator.SetTrigger ("Grow");
+		//_blinkBall.GetComponent<BlinkBall> ()._animator.SetTrigger ("Grow");
 		_particleChild = _blinkBall.GetComponentInChildren<ParticleSystem> ().gameObject;
 		_blinkBall.transform.parent = shootOrigin;
 		_particleChild.SetActive (false);
