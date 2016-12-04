@@ -17,7 +17,7 @@ public class Level : StateBehaviour {
 
 	public void SetTransform(Level transitionRoom) {
 		transform.position = transitionRoom.nextDoor.transform.position;
-		transform.rotation = transitionRoom.nextDoor.transform.rotation * Quaternion.Inverse(previousDoor.transform.rotation);
+		transform.rotation = Quaternion.Inverse(previousDoor.transform.rotation);
 	}
 
 	void DelayAwake()

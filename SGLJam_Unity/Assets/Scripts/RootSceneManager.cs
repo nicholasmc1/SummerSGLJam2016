@@ -13,8 +13,8 @@ public class RootSceneManager : MonoBehaviour {
 	{
 		Instance = this;
 		LoadLevel ("TransitionTunnel");
-		Instantiate (playerPrefab, new Vector3(0f, 0f, -2f), Quaternion.identity);
-		_levels = new string[]{"Level1", "Level2", "Level3", "Level4", "Level5"};
+		Instantiate (playerPrefab, new Vector3(0f, 0f, 2f), Quaternion.identity);
+		_levels = new string[]{"Level1", "Level2", "Level3", "Level4", "Level5", "Level7"};
 		//init transition room
 	}
 	/*public static RootSceneManager GetInstance() {
@@ -49,7 +49,7 @@ public class RootSceneManager : MonoBehaviour {
 	}
 
 	private void RemoveLevel(string level) {
-		SceneManager.UnloadScene (level);
+		SceneManager.UnloadSceneAsync (level);
 	}
 
 	private void LoadLevel(string level) {
@@ -58,17 +58,22 @@ public class RootSceneManager : MonoBehaviour {
 
 	// Call this once you are at the end of a level
 	public void SetupTransitionRoom() {
+        //LoadLevel(_transitionRoomScene);
 		_transitionRoom.gameObject.SetActive(true);
+        _transitionRoom.transform.position = _currentLevel.nextDoor.transform.position - _transitionRoom.previousDoor.transform.localPosition;
 		// Once transition room is active, open the doors
 		_currentLevel.nextDoor.SetActive(false);
 		_transitionRoom.previousDoor.SetActive(false);
+        _transitionRoom.nextDoor.SetActive(true);
+        _transitionRoom.GetComponentInChildren<NextRoom>().hit = false;
 	}
 
 	// Call this once inside the beginning of a level
 	public void CloseTransitionRoom() {
 		// Close door to previous level
 		_currentLevel.previousDoor.SetActive (true);
-		//_transitionRoom.gameObject.SetActive (false);
+        //RemoveLevel(_transitionRoomScene);
+		_transitionRoom.gameObject.SetActive (false);
 	}
 
 	// Call this once from inside the transition level
