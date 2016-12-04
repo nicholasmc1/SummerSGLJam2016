@@ -109,13 +109,14 @@ public class PlayerCore : StateBehaviour {
 
 	public void Die() {
         //Debug.Log("Die");
+		headDirection.gameObject.GetComponent<Camera>().fieldOfView = 179;
+		move._movState = PlayerMovement.movementState.standing;
 		GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		move.grounded = true;
 		move.timeSinceGrounded = 0;
 		if (blinkBall != null) {
 			Destroy (blinkBall.gameObject);
 		}
-		move._movState = PlayerMovement.movementState.standing;
 		transform.position = currentRespawnPoint.position;
         currentRespawnPoint.GetComponent<SpawnPoint>().RespawnFX();
 	}
