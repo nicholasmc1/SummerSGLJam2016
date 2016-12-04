@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4100502655398170}
   - component: {fileID: 114896901739656902}
+  - component: {fileID: 64801069474615506}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -201,6 +202,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1772616227757532}
   m_Mesh: {fileID: 4300000, guid: 48134fc7c52b6754599f30b7aacd0b4b, type: 3}
+--- !u!64 &64801069474615506
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763111008280122}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
 --- !u!108 &108614503717390560
 Light:
   m_ObjectHideFlags: 1
@@ -246,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6898f9412f9a9fa42912c1a3e5c11101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hit: 0
   par: {fileID: 198705381072914476}
 --- !u!198 &198705381072914476
 ParticleSystem:
