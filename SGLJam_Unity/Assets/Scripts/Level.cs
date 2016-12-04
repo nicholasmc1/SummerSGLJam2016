@@ -16,7 +16,7 @@ public class Level : StateBehaviour {
 	}
 
 	public void SetTransform(Level transitionRoom) {
-		transform.position = transitionRoom.nextDoor.transform.position;
+		transform.position = transitionRoom.nextDoor.GetComponent<TransitionDoors>().initPosition;
 		transform.rotation = Quaternion.Inverse(previousDoor.transform.rotation);
 	}
 
