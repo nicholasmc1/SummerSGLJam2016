@@ -50,10 +50,11 @@ public class RagdollManagement : StateBehaviour {
 
 	public void Deactivate () {
 		player.transform.position = _ragdoll.transform.position;
-		//ragdollParent.SetActive (false); 
+		//ragdollParent.SetActive (false);
 		_flopping = false;
         move.head.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
         player.GetComponent<Rigidbody>().isKinematic = false;
+		player.GetComponent<Rigidbody> ().velocity = _ragdoll.gameObject.GetComponent<Rigidbody> ().velocity;
 		Destroy(ragdollParent);
 	}
 

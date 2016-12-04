@@ -9,6 +9,8 @@ public class BlinkBall : StateBehaviour {
 	private Rigidbody _rigid;
 	private float timer;
     public ParticleSystem bounceParticle;
+	[HideInInspector]
+	public Animator _animator;
     private AudioSource _source;
     public AudioClip bounceSound;
     public float bounceVol = 1;
@@ -16,11 +18,11 @@ public class BlinkBall : StateBehaviour {
 
 	void Awake () {
 		_rigid = GetComponent<Rigidbody> ();
-		Destroy (gameObject, lifetime);
+		_animator = gameObject.GetComponent<Animator> ();
         _source = gameObject.AddComponent<AudioSource>();
         _source.clip = bounceSound;
         _source.volume = bounceVol;
-        
+		Destroy (gameObject, lifetime);
 	}
 
 	public void SetPlayer(GameObject obj) {
