@@ -60,7 +60,7 @@ public class RootSceneManager : MonoBehaviour {
 	public void SetupTransitionRoom() {
         //LoadLevel(_transitionRoomScene);
 		_transitionRoom.gameObject.SetActive(true);
-		_transitionRoom.transform.position = _currentLevel.nextDoor.transform.position - _transitionRoom.previousDoor.GetComponent<TransitionDoors>().initPosition;
+        _transitionRoom.transform.position = _currentLevel.nextDoor.transform.position - _transitionRoom.previousDoor.transform.localPosition;
 		// Once transition room is active, open the doors
 		_currentLevel.nextDoor.SetActive(false);
 		_transitionRoom.previousDoor.SetActive(false);
@@ -81,8 +81,7 @@ public class RootSceneManager : MonoBehaviour {
 		// Close door to previous level;
 		_transitionRoom.previousDoor.SetActive(true);
 		// Open door to next
-		//_transitionRoom.nextDoor.SetActive(false);
-		_transitionRoom.nextDoor.GetComponent<TransitionDoors>().opening = true;
+		_transitionRoom.nextDoor.SetActive(false);
 
 		// Begin loading the next level once previous room is destroyed
 		LoadLevel(_levels[_currentLevelScene]);
