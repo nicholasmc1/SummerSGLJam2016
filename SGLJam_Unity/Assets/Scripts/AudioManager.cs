@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
 	public AudioSource blinkSource;
 	[HideInInspector]
 	public AudioSource deathSource;
+	[HideInInspector]
+	public AudioSource doorSource;
 	// Audio Clips
     public AudioClip ambClip;
     public AudioClip pumpClip;
@@ -24,6 +26,7 @@ public class AudioManager : MonoBehaviour
 	public AudioClip fireClip;
 	public AudioClip blinkClip;
 	public AudioClip velocityDeathClip;
+	public AudioClip doorClip;
 
     void Awake()
     {
@@ -38,10 +41,11 @@ public class AudioManager : MonoBehaviour
 			fireSource = gameObject.AddComponent<AudioSource> ();
 			blinkSource = gameObject.AddComponent<AudioSource> ();
 			deathSource = gameObject.AddComponent<AudioSource> ();
+			doorSource = gameObject.AddComponent<AudioSource> ();
 			// Attach clips to sources
             ambSource.clip = ambClip;
             ambSource.loop = true;
-			ambSource.volume = 0.8f;
+			ambSource.volume = 0.7f;
             pumpSource.clip = pumpClip;
             pumpSource.loop = true;
 			whooshSource.clip = whooshClip;
@@ -51,6 +55,8 @@ public class AudioManager : MonoBehaviour
 			fireSource.clip = fireClip;
 			blinkSource.clip = blinkClip;
 			deathSource.clip = velocityDeathClip;
+
+			doorSource.clip = doorClip;
 			// Play sounds
             ambSource.Play();
             pumpSource.Play();

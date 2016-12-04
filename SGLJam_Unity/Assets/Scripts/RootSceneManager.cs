@@ -38,6 +38,7 @@ public class RootSceneManager : MonoBehaviour {
 	private Level _transitionRoom;
 	private Level _currentLevel;
 
+
 	public void SetCurrentLevel(Level level) 
 	{
 		_currentLevel = level;
@@ -66,6 +67,7 @@ public class RootSceneManager : MonoBehaviour {
 		_transitionRoom.previousDoor.SetActive(false);
         _transitionRoom.nextDoor.SetActive(true);
         _transitionRoom.GetComponentInChildren<NextRoom>().hit = false;
+		AudioManager._instance.doorSource.Play ();
 	}
 
 	// Call this once inside the beginning of a level
@@ -74,6 +76,7 @@ public class RootSceneManager : MonoBehaviour {
 		_currentLevel.previousDoor.SetActive (true);
         //RemoveLevel(_transitionRoomScene);
 		_transitionRoom.gameObject.SetActive (false);
+		AudioManager._instance.doorSource.Play ();
 	}
 
 	// Call this once from inside the transition level
@@ -88,6 +91,7 @@ public class RootSceneManager : MonoBehaviour {
 		_currentLevelScene++;
 		// Once next level is loaded, open the door to the next level
 		StartCoroutine(MovingNewLevel());
+		AudioManager._instance.doorSource.Play ();
 	}
 	IEnumerator MovingNewLevel()
 	{
