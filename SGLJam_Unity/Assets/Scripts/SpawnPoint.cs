@@ -20,12 +20,16 @@ public class SpawnPoint : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void OnTriggerEnter (Collider collider) {
-		Debug.Log("Ye");
-		if(collider.gameObject.tag == "Player" && !hit) {
-			hit = true;
-			RootSceneManager.Instance.CloseTransitionRoom ();
-		}
+	void OnTriggerEnter (Collider collider) 
+    {
+        if (UnityEngine.SceneManagement.SceneManager.sceneCount > 1)
+        {
+            if (collider.gameObject.tag == "Player" && !hit)
+            {
+                hit = true;
+                RootSceneManager.Instance.CloseTransitionRoom();
+            }
+        }
 	}
 
 	public void RespawnFX() {

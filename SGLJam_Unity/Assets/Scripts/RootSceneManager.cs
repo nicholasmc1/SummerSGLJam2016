@@ -14,7 +14,7 @@ public class RootSceneManager : MonoBehaviour {
 		Instance = this;
 		LoadLevel ("TransitionTunnel");
 		Instantiate (playerPrefab, new Vector3(0f, 0f, 2f), Quaternion.identity);
-		_levels = new string[]{"Level1", "Level2", "Level3", "Level4", "Level5", "Level7"};
+		_levels = new string[]{"Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7"};
 		//init transition room
 	}
 	/*public static RootSceneManager GetInstance() {
