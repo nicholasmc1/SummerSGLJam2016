@@ -70,6 +70,7 @@ public class WeaponManagement : StateBehaviour {
 			_animator.SetFloat ("charge", 0);
 			_animator.SetTrigger ("shoot");
 			_blinkBall.GetComponent<Rigidbody> ().velocity = v;
+            speed = 20;
 			_timeElapsed = 0;
 			return _blinkBall.GetComponent<BlinkBall> ();
 		}
