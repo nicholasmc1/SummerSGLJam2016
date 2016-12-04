@@ -39,7 +39,7 @@ public class InputManager : MonoBehaviour
 		bindings.interact.AddDefaultBinding(Key.F);
 		bindings.fire.AddDefaultBinding(Mouse.LeftButton);
 		bindings.blink.AddDefaultBinding(Mouse.RightButton);
-		bindings.reload.AddDefaultBinding(Key.R);
+		bindings.respawn.AddDefaultBinding(Key.R);
 		bindings.cancel.AddDefaultBinding(Key.Q);
 
 		bindings.ragdoll.AddDefaultBinding(Key.Space);

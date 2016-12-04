@@ -98,6 +98,10 @@ public class PlayerCore : StateBehaviour {
 				ragdoll.Deactivate ();
 			}
 		}
+
+        if (bindings.respawn.WasPressed) {
+            Die();
+        }
 	}
 
 	public override void UpdatePaused() {

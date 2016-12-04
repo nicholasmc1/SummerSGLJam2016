@@ -18,9 +18,9 @@ public class PlayerBindings : PlayerActionSet
 
 	public PlayerAction interact;
 	public PlayerAction fire;
-	public PlayerAction reload;
 	public PlayerAction blink;
 	public PlayerAction cancel;
+    public PlayerAction respawn;
 
 	public PlayerAction ragdoll;
 	public PlayerAction pauseGame;
@@ -48,7 +48,7 @@ public class PlayerBindings : PlayerActionSet
 		fire = CreatePlayerAction("Fire");
 		blink = CreatePlayerAction("Blink");
 		cancel = CreatePlayerAction("Cancel");
-		reload = CreatePlayerAction("Reload");
+        respawn = CreatePlayerAction("Respawn");
 
 		ragdoll = CreatePlayerAction("Ragdoll");
 		pauseGame = CreatePlayerAction("Pause Game");
