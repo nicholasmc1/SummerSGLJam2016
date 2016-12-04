@@ -77,6 +77,9 @@ public class PlayerMovement: StateBehaviour
 		} else {
 			_camera.fieldOfView = Mathf.Lerp (_camera.fieldOfView, 80, 0.2f); 
 		}
+
+        if (AudioManager._instance != null)
+            AudioManager._instance.UpadteMusicVol(move.velocity.magnitude/15);
 	}
 
 	public void MovePlayer(Vector3 dir)
