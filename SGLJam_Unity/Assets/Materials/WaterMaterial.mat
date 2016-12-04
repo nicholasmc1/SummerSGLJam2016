@@ -225,7 +225,7 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.8
+      second: 0.843
     - first:
         name: _GlossyReflections
       second: 1
@@ -328,7 +328,7 @@ Material:
       second: {r: 0.1, g: 0.1, b: 0.1, a: 0.1}
     - first:
         name: _Color
-      second: {r: 1, g: 0.022058845, b: 0.022058845, a: 0.978}
+      second: {r: 0.875, g: 0.0064338297, b: 0.0064338297, a: 0.978}
     - first:
         name: _DepthColor
       second: {r: 0.027511697, g: 0.14179105, b: 0.13226777, a: 0.4627451}
@@ -421,7 +421,7 @@ Material:
       second: {r: 1, g: 1, b: 0.1, a: 0.1}
     - first:
         name: _SpecColor
-      second: {r: 0.4385813, g: 0.9558824, b: 0.30925608, a: 0.547}
+      second: {r: 0.7647059, g: 0.16868511, b: 0.67427504, a: 0.547}
     - first:
         name: _SpecularColor
       second: {r: 0.91791046, g: 0.91791046, b: 0.91791046, a: 1}
