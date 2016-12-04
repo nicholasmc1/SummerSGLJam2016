@@ -10,7 +10,8 @@ public class PlayerHUD : MonoBehaviour {
     public Canvas UICanvas;
     public float v = 0;
     public float charge = 0;
-	
+    public float t = 0.5f;
+
 	void Start () {
 		
 	}
@@ -31,7 +32,7 @@ public class PlayerHUD : MonoBehaviour {
 
         if (v <= 20)
         {
-            velocityMeter.fillAmount = v / 20.0f;
+            velocityMeter.fillAmount = Mathf.Lerp(velocityMeter.fillAmount, (v / 20.0f), Time.deltaTime * 8);
         }
         else
         {
