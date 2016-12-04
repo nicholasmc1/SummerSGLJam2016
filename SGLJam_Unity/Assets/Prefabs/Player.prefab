@@ -19,12 +19,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4387234740044424}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ik_FrontCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1136461691456038
 GameObject:
@@ -35,12 +35,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4498113330012990}
   - component: {fileID: 95275342048891804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Projector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1208378523410018
 GameObject:
@@ -50,12 +50,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4491533007352462}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ik_root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1265907125250718
 GameObject:
@@ -71,7 +71,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1417864520641486
 GameObject:
@@ -86,7 +86,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1561291261300190
 GameObject:
@@ -106,7 +106,7 @@ GameObject:
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1591902627583586
 GameObject:
@@ -116,12 +116,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4766066453896116}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ik_Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1732484739305822
 GameObject:
@@ -132,12 +132,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4466214958465792}
   - component: {fileID: 137097388653872520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pr_Projector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1760192089657256
 GameObject:
@@ -153,12 +153,12 @@ GameObject:
   - component: {fileID: 81520862083511916}
   - component: {fileID: 114904372892810400}
   - component: {fileID: 114852543086966852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4271986127395018
 Transform:
@@ -404,6 +404,8 @@ MonoBehaviour:
   maxSpeed: 25
   speed: 0
   chargeSpeed: 0
+  _animator: {fileID: 0}
+  _blinkBall: {fileID: 0}
 --- !u!114 &114817834574250410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -458,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 1df8c479838190b4093fcc847fa987e0, type: 2}
+  profile: {fileID: 11400000, guid: 693763bf5c08bc240b2fa28f5cfb9777, type: 2}
 --- !u!124 &124553124861839608
 Behaviour:
   m_ObjectHideFlags: 1
