@@ -12,6 +12,7 @@ public class RagdollCamera : StateBehaviour {
 	public override void UpdatePlaying () {
 		if (PlayerCore._instance.playerState == PlayerCore.inputState.ragdoll) {
 			transform.LookAt (lookAtTarget);
+			PlayerCore._instance.move._movState = PlayerMovement.movementState.standing;
 		}
 	}
 
