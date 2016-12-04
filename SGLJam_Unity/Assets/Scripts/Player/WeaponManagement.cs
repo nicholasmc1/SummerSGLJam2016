@@ -63,6 +63,7 @@ public class WeaponManagement : StateBehaviour {
 		_blinkBall.transform.parent = null;
 		_blinkBall.GetComponent<Rigidbody> ().velocity = v;
 		_timeElapsed = 0;
+        speed = 20;
         return _blinkBall.GetComponent<BlinkBall>();
 	}
 }
