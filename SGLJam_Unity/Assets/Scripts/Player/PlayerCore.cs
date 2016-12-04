@@ -109,6 +109,7 @@ public class PlayerCore : StateBehaviour {
 	}
 
 	public void Die() {
+        Debug.Log("Die");
 		GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		move.grounded = true;
 		move.timeSinceGrounded = 0;

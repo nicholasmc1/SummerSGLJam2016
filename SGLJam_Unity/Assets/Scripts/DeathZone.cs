@@ -11,5 +11,8 @@ public class DeathZone : MonoBehaviour
 			PlayerCore._instance.Die ();
         }
 
+        if (col.gameObject.layer == 9)
+            Destroy(col.gameObject);
+
     }
 }

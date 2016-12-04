@@ -109,7 +109,10 @@ public class PlayerMovement: StateBehaviour
 		if (grounded) {
 			move.velocity = newMove;
 		}
-		prevVel = move.velocity;
+        if (PlayerCore._instance.playerState == PlayerCore.inputState.free)
+            prevVel = move.velocity;
+        else
+            prevVel = Vector3.zero;
 //		else
 //			move.velocity = new Vector3(0, 0, 0);
 
@@ -139,9 +142,21 @@ public class PlayerMovement: StateBehaviour
 
 	void OnCollisionEnter(Collision col)
 	{
-		if (Vector3.Dot (col.contacts[0].normal, prevVel) < - 	10 && prevVel.magnitude >= 20){
-			PlayerCore._instance.Die ();
-		}
+        if (PlayerCore._instance.playerState != PlayerCore.inputState.ragdoll)
+        {
+            if (prevVel.magnitude >= 20)
+            {
+                Vector3 newNormal = new Vector3(0, 0, 0);
+                foreach (ContactPoint norm in col.contacts)
+                    newNormal += norm.normal;
+                newNormal = newNormal / col.contacts.Length;
+                if (Vector3.Dot(newNormal, prevVel) < -10)
+                {
+                    PlayerCore._instance.Die();
+                    Debug.Log(prevVel + "VEL");
+                }
+            }
+        }
 
 	}
 

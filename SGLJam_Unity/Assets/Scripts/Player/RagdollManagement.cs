@@ -43,6 +43,7 @@ public class RagdollManagement : StateBehaviour {
 		move.head.gameObject.GetComponent<RagdollCamera> ().lookAtTarget = _ragdoll;
 		move.head.gameObject.GetComponentInChildren <SkinnedMeshRenderer> ().enabled = false;
 		_flopping = true;
+        player.GetComponent<Rigidbody>().isKinematic = true;
 	}
 
 	public void Deactivate () {
@@ -50,6 +51,7 @@ public class RagdollManagement : StateBehaviour {
 		//ragdollParent.SetActive (false); 
 		_flopping = false;
         move.head.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+        player.GetComponent<Rigidbody>().isKinematic = false;
 		Destroy(ragdollParent);
 	}
 }
