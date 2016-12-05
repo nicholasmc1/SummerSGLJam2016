@@ -88,6 +88,7 @@ public class WeaponManagement : StateBehaviour {
 			_blinkBall.GetComponent<Rigidbody> ().velocity = v;
             speed = 20;
 			_timeElapsed = 0;
+			Destroy (_blinkBall, _blinkBall.GetComponent<BlinkBall>().lifetime);
 			return _blinkBall.GetComponent<BlinkBall> ();
 		}
 		return null;

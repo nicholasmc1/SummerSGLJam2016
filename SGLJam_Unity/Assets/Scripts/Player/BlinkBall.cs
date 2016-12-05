@@ -21,7 +21,6 @@ public class BlinkBall : StateBehaviour {
         _source = gameObject.AddComponent<AudioSource>();
         _source.clip = bounceSound;
         _source.volume = bounceVol;
-		Destroy (gameObject, lifetime);
 	}
 
 	public void SetPlayer(GameObject obj) {
