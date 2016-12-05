@@ -85,7 +85,10 @@ public class RootSceneManager : MonoBehaviour {
 		_transitionRoom.previousDoor.SetActive(true);
 		// Open door to next
 		_transitionRoom.nextDoor.SetActive(false);
-
+		// Remove previous level
+		if (_currentLevelScene > 0) {
+			RemoveLevel (_levels [_currentLevelScene - 1]);
+		}
 		// Begin loading the next level once previous room is destroyed
 		LoadLevel(_levels[_currentLevelScene]);
 		_currentLevelScene++;

@@ -8,7 +8,8 @@ public class PlayerCore : StateBehaviour {
 	[HideInInspector]
 	public WeaponManagement weapon;
 	private BlinkBall blinkBall;
-	private RagdollManagement ragdoll;
+	[HideInInspector]
+	public RagdollManagement ragdoll;
 	[HideInInspector]
 	public bool peeking;
 	public Transform currentRespawnPoint;

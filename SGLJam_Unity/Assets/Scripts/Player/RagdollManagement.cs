@@ -6,7 +6,8 @@ public class RagdollManagement : StateBehaviour {
 
 	public GameObject ragdollPrefab;
 	private GameObject ragdollParent;
-	private Transform _ragdoll;
+	[HideInInspector]
+	public Transform _ragdoll;
 	private GameObject player;
 	private PlayerMovement move;
 	private bool _flopping;
@@ -24,6 +25,7 @@ public class RagdollManagement : StateBehaviour {
 	public void Spawn () {
 		ragdollParent = Instantiate(ragdollPrefab) as GameObject;
 		_ragdoll = ragdollParent.transform.GetChild (2);
+		move.ragdollMove = _ragdoll.GetComponent<Rigidbody> ();
 		//ragdollParent.SetActive (false);
 	}
 
@@ -40,6 +42,7 @@ public class RagdollManagement : StateBehaviour {
 		PlayerCore._instance.weapon.charging = false;
 		Spawn();
 		ragdollParent.transform.position = player.transform.position;
+		ragdollParent.transform.rotation = player.transform.rotation;
 		foreach (Rigidbody rigidbody in ragdollParent.GetComponentsInChildren<Rigidbody> ()) {
 			rigidbody.velocity = player.GetComponentInChildren<Rigidbody> ().velocity;
 		}

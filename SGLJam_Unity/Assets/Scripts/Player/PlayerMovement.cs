@@ -5,6 +5,8 @@ public class PlayerMovement: StateBehaviour
 {
 	private bool hasInit = false;
 	private Rigidbody move = null;
+	//[HideInInspector]
+	public Rigidbody ragdollMove = null;
 	private CapsuleCollider myCol;
 //	[HideInInspector]
 //	public PlayerInteraction actions;
@@ -59,6 +61,8 @@ public class PlayerMovement: StateBehaviour
 			} else {
 				blinkTimer += Time.deltaTime;
 			}
+		} else {
+			blinkTimer = 0;
 		}
 
 		timeSinceGrounded += Time.deltaTime;
@@ -89,12 +93,15 @@ public class PlayerMovement: StateBehaviour
 			_camera.fieldOfView = Mathf.Lerp (_camera.fieldOfView, 80, 0.2f); 
 		}
 
-		if (AudioManager._instance != null && move.velocity.magnitude > 7.7f) {
-			AudioManager._instance.FastMusic ((move.velocity.magnitude - 7.6f ) / 12);
-		} else {
-			AudioManager._instance.FastMusic (0);
-		}
-
+		if (AudioManager._instance != null) {
+			if (ragdollMove != null && ragdollMove.velocity.magnitude > 7.7f) {
+				AudioManager._instance.FastMusic ((ragdollMove.velocity.magnitude - 7.6f) / 12); 
+			} else if (move.velocity.magnitude > 7.7f) {
+				AudioManager._instance.FastMusic ((move.velocity.magnitude - 7.6f) / 12);
+			} else {
+				AudioManager._instance.FastMusic (0);
+			}
+		} 
 	}
 
 	public void MovePlayer(Vector3 dir)
