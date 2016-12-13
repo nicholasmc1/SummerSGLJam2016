@@ -379,6 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {fileID: 0}
   weapon: {fileID: 0}
+  ragdoll: {fileID: 0}
   peeking: 0
   currentRespawnPoint: {fileID: 0}
   ragdollPrefab: {fileID: 1092881870398894, guid: db342097cb5c0dd46b337ac4452eb2eb,
@@ -388,6 +389,8 @@ MonoBehaviour:
   playerState: 0
   shootTimer: 0
   HUDPrefab: {fileID: 1326735774157082, guid: 628d3119d0aa68a4794a66f1585f8d68, type: 2}
+  PauseMenuPrefab: {fileID: 1232825498655934, guid: bf56b8e74e005be4da277db37c4dcaed,
+    type: 2}
   hitMask:
     serializedVersion: 2
     m_Bits: 1
@@ -422,6 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac11c1f15026dc46a1b0c372bf315bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragdollMove: {fileID: 0}
   _movState: 0
   grounded: 1
   gravity: 100
@@ -429,6 +433,7 @@ MonoBehaviour:
   head: {fileID: 4272354098934204}
   eyeHeight: 1.2
   timeSinceGrounded: 0
+  blinkTimer: 0
 --- !u!114 &114852543086966852
 MonoBehaviour:
   m_ObjectHideFlags: 1

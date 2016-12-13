@@ -24,6 +24,8 @@ public class PlayerCore : StateBehaviour {
 
 	public float shootTimer;
 	public GameObject HUDPrefab;
+	public GameObject PauseMenuPrefab;
+	private GameObject _pauseMenu;
     public LayerMask hitMask;
 
 	void Awake() 
@@ -36,6 +38,9 @@ public class PlayerCore : StateBehaviour {
             weapon = GetComponentInChildren<WeaponManagement>();
             GameObject _ragdoll = Instantiate(ragdollPrefab);
 			Instantiate (HUDPrefab);
+			_pauseMenu = Instantiate (PauseMenuPrefab);
+			Debug.Log ("pausemenu");
+			_pauseMenu.SetActive (false);
             ragdoll = _ragdoll.GetComponent<RagdollManagement>();
             move.head = headDirection;
             move.head.transform.parent = null;
@@ -60,6 +65,7 @@ public class PlayerCore : StateBehaviour {
 		if(bindings.pauseGame.WasPressed) {
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
+			_pauseMenu.SetActive (true);
 			Globals.gameState = GameState.Paused;
 		}
 		if (playerState == inputState.free) {
@@ -125,6 +131,7 @@ public class PlayerCore : StateBehaviour {
 
 	public override void UpdatePaused() {
 		if (bindings.pauseGame.WasPressed) {
+			_pauseMenu.SetActive (false);
 			Cursor.lockState = CursorLockMode.Locked;
 			Globals.gameState = GameState.Playing;
 		}
